@@ -65,6 +65,77 @@
 
   
     
+    <h3 class="article-title"><a href="/2020/12/14/前端生成SM2公私钥/"><span>前端生成SM2公私钥</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2020/12/14/前端生成SM2公私钥/" rel="bookmark">
+        <time class="entry-date published" datetime="2020-12-14T08:02:39.000Z">
+          2020-12-14
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>1.需要引入特定的js文件(jsrsasign)</p>
+<p>2.生成公私钥</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getKeys</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> ec = <span class="keyword">new</span> KJUR.crypto.ECDSA(&#123; <span class="string">'curve'</span>: <span class="string">'sm2'</span> &#125;);</span><br><span class="line">  <span class="keyword">const</span> keypair = ec.generateKeyPairHex();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>.privateKey = keypair.ecprvhex;</span><br><span class="line">  <span class="keyword">this</span>.publicKey = keypair.ecpubhex;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.info(<span class="string">'公钥：'</span> + <span class="keyword">this</span>.publicKey);</span><br><span class="line">  <span class="built_in">console</span>.info(<span class="string">'私钥：'</span> + <span class="keyword">this</span>.privateKey)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3.签名</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">signMsg</span> (<span class="params">privateKey, msg</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> sig = <span class="keyword">new</span> KJUR.crypto.Signature(&#123; <span class="string">'alg'</span>: <span class="string">'SM3withSM2'</span>, <span class="string">'prov'</span>: <span class="string">'cryptojs/jsrsa'</span> &#125;);</span><br><span class="line">    sig.initSign(&#123; <span class="string">'ecprvhex'</span>: privateKey, <span class="string">'eccurvename'</span>: <span class="string">'sm2'</span> &#125;);</span><br><span class="line">    <span class="keyword">return</span> sig.sign(msg)</span><br><span class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="built_in">console</span>.info(<span class="string">'签名失败'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>说明:</p>
+<p>1.前端生成的为压缩公钥，其公钥hex想在java或者go端解析需要加上头：3059301306072a8648ce3d020106082a811ccf5501822d034200</p>
+<p> 公钥：3059301306072a8648ce3d020106082a811ccf5501822d034200 + 04 +x +y</p>
+<p>2.前端生成的私钥为压缩私钥，想在后台解析应如下（实际并不需要）</p>
+<p> 308193020100301306072a8648ce3d020106082a811ccf5501822d047930770201010420 + 压缩的私钥 + a00a06082a811ccf5501822da144034200 + 公钥hex</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/笔记/">笔记</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/SM2/">SM2</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
     <h3 class="article-title"><a href="/2020/12/14/java图片转base64/"><span>java图片转base64</span></a></h3>
     
   
@@ -602,70 +673,6 @@
     <span class="post-tags">
       <i class="icon-tags"></i>
         <a href="/tags/端口/">端口</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2019/10/12/docker常用操作指令/"><span>linux常用操作指令</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2019/10/12/docker常用操作指令/" rel="bookmark">
-        <time class="entry-date published" datetime="2019-10-12T02:41:07.000Z">
-          2019-10-12
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>1、查看本机所有镜像</p>
-<p>​    <code>docker images</code></p>
-<p>2、查看本机docker运行情况</p>
-<p>​    <code>dcoker ps -a -q</code></p>
-<p>3、通过通配符查找镜像</p>
-<p>​    <code>docker images ce*</code>     #查找包含ce的镜像</p>
-<p>4、查看镜像详情</p>
-<p>​    <code>docker inspect name</code>     #name为镜像名称</p>
-<p>5、搜索镜像</p>
-<p>​    <code>docker search tomcat</code>    #搜索包含tomcat的镜像</p>
-<p>6、删除镜像</p>
-<p>​    <code>docker rmi name</code>    #name为镜像名称，删除多个用空格隔开</p>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/docker/">docker</a>
     </span>
     
 

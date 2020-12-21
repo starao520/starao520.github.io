@@ -1,0 +1,143 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>vue前端下载base64文件 | 列侬,你变了</title>
+
+  
+  <meta name="author" content="starao">
+  
+
+  
+  <meta name="description" content="工作学习小记">
+  
+
+  
+  
+  <meta name="keywords" content="vue">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="vue前端下载base64文件">
+
+  <meta property="og:site_name" content="列侬,你变了">
+
+  
+  <meta property="og:image" content="/favicon.ico">
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="列侬,你变了" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">列侬,你变了</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+        <li><a href="/tags">标签</a></li>
+      
+        <li><a href="/about">关于</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>vue前端下载base64文件</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2020/12/21/vue前端下载base64文件/" rel="bookmark">
+        <time class="entry-date published" datetime="2020-12-21T08:41:39.000Z">
+          2020-12-21
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="1、单个文件下载"><a href="#1、单个文件下载" class="headerlink" title="1、单个文件下载"></a>1、单个文件下载</h2><h4 id="1-base64转blob"><a href="#1-base64转blob" class="headerlink" title="1.base64转blob"></a>1.base64转blob</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">base64ToBlob</span>(<span class="params">code</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> parts = code.split(<span class="string">';base64,'</span>);</span><br><span class="line">  <span class="keyword">let</span> contentType = parts[<span class="number">0</span>].split(<span class="string">':'</span>)[<span class="number">1</span>];</span><br><span class="line">  <span class="keyword">let</span> raw = <span class="built_in">window</span>.atob(parts[<span class="number">1</span>]);</span><br><span class="line">  <span class="keyword">let</span> rawLength = raw.length;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> uInt8Array = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(rawLength);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; rawLength; ++i) &#123;</span><br><span class="line">    uInt8Array[i] = raw.charCodeAt(i);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> Blob([uInt8Array], &#123;<span class="attr">type</span>: contentType&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-下载文件"><a href="#2-下载文件" class="headerlink" title="2.下载文件"></a>2.下载文件</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">downloadFile</span>(<span class="params">fileName, content</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> aLink = <span class="built_in">document</span>.createElement(<span class="string">'a'</span>);</span><br><span class="line">  <span class="comment">//new Blob([content]);</span></span><br><span class="line">  <span class="keyword">let</span> blob = base64ToBlob(content); </span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> evt = <span class="built_in">document</span>.createEvent(<span class="string">"HTMLEvents"</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"点击下载"</span>,evt)</span><br><span class="line">  <span class="comment">//initEvent 不加后两个参数在FF下会报错  事件类型，是否冒泡，是否阻止浏览器的默认行为</span></span><br><span class="line">  evt.initEvent(<span class="string">"click"</span>, <span class="literal">true</span>, <span class="literal">true</span>);</span><br><span class="line">  aLink.download = fileName;</span><br><span class="line">  aLink.href = URL.createObjectURL(blob);</span><br><span class="line">  <span class="comment">// aLink.dispatchEvent(evt);</span></span><br><span class="line">  aLink.click()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2、批量打包下载"><a href="#2、批量打包下载" class="headerlink" title="2、批量打包下载"></a>2、批量打包下载</h2><h4 id="1-需要安装两个依赖"><a href="#1-需要安装两个依赖" class="headerlink" title="1.需要安装两个依赖"></a>1.需要安装两个依赖</h4><p>​    JSZip：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install jszip --save</span><br></pre></td></tr></table></figure>
+
+<p>​    FileSaver:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install file-saver --save</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">batchDown</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>.batchList.length === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">this</span>.$message.warning(<span class="string">'请选择要下载的证书'</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 打包下载的文件名</span></span><br><span class="line">  <span class="keyword">const</span> blogTitle = <span class="string">'证书下载'</span></span><br><span class="line">  <span class="keyword">const</span> zip = <span class="keyword">new</span> JSZip()</span><br><span class="line">  <span class="keyword">const</span> imgs = zip.folder(blogTitle)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 遍历要下载的文件对象，这里都是png，可以根据实际情况修改</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> k = <span class="number">0</span>; k &lt; <span class="keyword">this</span>.batchList.length; k++) &#123;</span><br><span class="line">    imgs.file(<span class="keyword">this</span>.batchList[k].doc_name + <span class="string">'.png'</span>, <span class="keyword">this</span>.batchList[k].doc_data.split(<span class="string">'base64,'</span>)[<span class="number">1</span>], &#123;</span><br><span class="line">      base64: <span class="literal">true</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  zip.generateAsync(&#123; <span class="attr">type</span>: <span class="string">'blob'</span> &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">content</span>) </span>&#123;</span><br><span class="line">    FileSaver.saveAs(content, blogTitle + <span class="string">'.zip'</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">this</span>.dialogVisible = <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/vue/">vue</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2020 starao
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

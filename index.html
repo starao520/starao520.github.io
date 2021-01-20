@@ -65,6 +65,71 @@
 
   
     
+    <h3 class="article-title"><a href="/2021/01/20/mysql按日期统计/"><span>mysql按日期统计</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2021/01/20/mysql按日期统计/" rel="bookmark">
+        <time class="entry-date published" datetime="2021-01-20T10:26:09.000Z">
+          2021-01-20
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	count( u.id ) AS count,</span><br><span class="line">	s.date </span><br><span class="line">FROM</span><br><span class="line">	(</span><br><span class="line">SELECT</span><br><span class="line">	date_add(&apos;2021-01-20&apos;,interval @i:=@i+1 day) as date</span><br><span class="line">	</span><br><span class="line">FROM</span><br><span class="line">	( SELECT 1 &lt;foreach item = &quot;index&quot; collection = &quot;differDays&quot; &gt; UNION ALL SELECT 1 &lt;/foreach&gt; ) AS tmp,</span><br><span class="line">	( SELECT @i := - 1 ) t </span><br><span class="line">	) s</span><br><span class="line">	LEFT JOIN sys_bus u ON s.date = date_format( u.create_time, &apos;%Y-%m-%d&apos; ) </span><br><span class="line">	AND u.reg_status = &apos;2&apos; </span><br><span class="line">GROUP BY</span><br><span class="line">s.date</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">differDays:	要统计的日期天数</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2021</span>-<span class="number">01</span>-<span class="number">20</span>:	设定的一个开始日期</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/工作笔记/">工作笔记</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/mysql/">mysql</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
     <h3 class="article-title"><a href="/2021/01/20/mysql查询所有父级目录/"><span>mysql查询所有父级目录</span></a></h3>
     
   
@@ -611,60 +676,6 @@
     <span class="post-tags">
       <i class="icon-tags"></i>
         <a href="/tags/git/">git</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2019/10/24/vue子页面调用父页面方法/"><span>vue子页面调用父页面方法</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2019/10/24/vue子页面调用父页面方法/" rel="bookmark">
-        <time class="entry-date published" datetime="2019-10-24T02:58:47.000Z">
-          2019-10-24
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h6 id="父页面"><a href="#父页面" class="headerlink" title="父页面"></a>父页面</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">        &lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">```javascript</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    export default &#123;</span><br><span class="line">        name: &apos;app&apos;,</span><br><span class="line">        provide()&#123;</span><br><span class="line">            return&#123;</span><br><span class="line">                say:this.say</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        methods:&#123;</span><br><span class="line">            say()&#123;</span><br><span class="line">                this.$message.info(&apos;我是父页面的方法&apos;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<h6 id="子页面"><a href="#子页面" class="headerlink" title="子页面"></a>子页面</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;button @click=&quot;recv&quot;&gt;</span><br><span class="line">        点击调用父页面的方法</span><br><span class="line">    &lt;/button&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">```javascript&lt;script&gt;</span><br><span class="line">    export default &#123;</span><br><span class="line">        inject:[&apos;say&apos;],</span><br><span class="line">        methods:&#123;</span><br><span class="line">            recv()&#123;</span><br><span class="line">                this.say()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/vue/">vue</a>
     </span>
     
 

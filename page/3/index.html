@@ -65,6 +65,61 @@
 
   
     
+    <h3 class="article-title"><a href="/2019/09/19/vue全局鼠标滚动时自动收起下拉列表/"><span>vue全局鼠标滚动时自动收起下拉列表</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2019/09/19/vue全局鼠标滚动时自动收起下拉列表/" rel="bookmark">
+        <time class="entry-date published" datetime="2019-09-19T08:02:46.000Z">
+          2019-09-19
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h4 id="JS代码"><a href="#JS代码" class="headerlink" title="JS代码"></a>JS代码</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> lock = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">let</span> el = <span class="literal">null</span>;</span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">window</span>.CustomEvent === <span class="string">'function'</span>) <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// If not IE</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">CustomEvent</span> (<span class="params">event, params</span>) </span>&#123;</span><br><span class="line">    params = params || &#123; <span class="attr">bubbles</span>: <span class="literal">false</span>, <span class="attr">cancelable</span>: <span class="literal">false</span>, <span class="attr">detail</span>: <span class="literal">undefined</span> &#125;;</span><br><span class="line">    <span class="keyword">var</span> evt = <span class="built_in">document</span>.createEvent(<span class="string">'CustomEvent'</span>);</span><br><span class="line">    evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);</span><br><span class="line">    <span class="keyword">return</span> evt;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  CustomEvent.prototype = <span class="built_in">window</span>.Event.prototype;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">window</span>.CustomEvent = CustomEvent;</span><br><span class="line">&#125;)();</span><br><span class="line"><span class="keyword">const</span> MousedownEvent = <span class="keyword">new</span> <span class="built_in">window</span>.CustomEvent(<span class="string">'mousedown'</span>, &#123; <span class="attr">bubbles</span>: <span class="literal">true</span> &#125;);</span><br><span class="line"><span class="keyword">const</span> MouseupEvent = <span class="keyword">new</span> <span class="built_in">window</span>.CustomEvent(<span class="string">'mouseup'</span>, &#123; <span class="attr">bubbles</span>: <span class="literal">true</span> &#125;);</span><br><span class="line"><span class="keyword">const</span> fakeClickOutSide = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">document</span>.dispatchEvent(MousedownEvent);</span><br><span class="line">  <span class="built_in">document</span>.dispatchEvent(MouseupEvent);</span><br><span class="line">  lock = <span class="literal">true</span>; <span class="comment">// console.log('dispatchEvent');</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> mousedownHandle = <span class="function"><span class="params">e</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> classList = e.target.classList;</span><br><span class="line">  <span class="keyword">if</span> (classList.contains(<span class="string">'el-select__caret'</span>) || classList.contains(<span class="string">'el-input__inner'</span>)) &#123;</span><br><span class="line">    lock = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (lock) <span class="keyword">return</span>;</span><br><span class="line">  fakeClickOutSide();</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> mousewheelHandle = <span class="function"><span class="params">e</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (lock || e.target.classList.contains(<span class="string">'el-select-dropdown__item'</span>) || e.target.parentNode.classList.contains(<span class="string">'el-select-dropdown__item'</span>)) <span class="keyword">return</span>;</span><br><span class="line">  fakeClickOutSide();</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> eventListener = <span class="function">(<span class="params">type</span>) =&gt;</span> &#123;</span><br><span class="line">  el[type + <span class="string">'EventListener'</span>](<span class="string">'mousedown'</span>, mousedownHandle);</span><br><span class="line">  <span class="built_in">window</span>[type + <span class="string">'EventListener'</span>](<span class="string">'mousewheel'</span>, mousewheelHandle);</span><br><span class="line">  <span class="built_in">window</span>[type + <span class="string">'EventListener'</span>](<span class="string">'DOMMouseScroll'</span>, mousewheelHandle); <span class="comment">// fireFox 3.5+</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  mounted () &#123;</span><br><span class="line">    el = <span class="keyword">this</span>.$root.$el;</span><br><span class="line">    el.addFakeClickOutSideEventCount = el.addFakeClickOutSideEventCount || <span class="number">0</span>;</span><br><span class="line">    (!el.addFakeClickOutSideEventCount) &amp;&amp; <span class="keyword">this</span>.$nextTick(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      eventListener(<span class="string">'add'</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    el.addFakeClickOutSideEventCount += <span class="number">1</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">  destroyed () &#123;</span><br><span class="line">    eventListener(<span class="string">'remove'</span>);</span><br><span class="line">    el.addFakeClickOutSideEventCount -= <span class="number">1</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h4><p>1、在需要使用的页面引入该js文件<br>2、使用mixins<br>    <code>mixins: [fakeClickOutSide]</code></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/vue/">vue</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
     <h3 class="article-title"><a href="/2019/09/19/Hexo发布文章流程/"><span>Hexo发布文章流程</span></a></h3>
     
   

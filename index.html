@@ -65,6 +65,79 @@
 
   
     
+    <h3 class="article-title"><a href="/2021/02/25/jar包开机启动/"><span>jar包开机启动</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2021/02/25/jar包开机启动/" rel="bookmark">
+        <time class="entry-date published" datetime="2021-02-25T09:55:03.000Z">
+          2021-02-25
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>1、进入/usr/lib/systemd/system</p>
+<p>2、创建xxx.service</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[Unit]</span><br><span class="line">Description=bing <span class="comment">#描述</span></span><br><span class="line">After=syslog.target network.target  <span class="comment">#依赖</span></span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line"></span><br><span class="line"><span class="comment">#前面是jar包的绝对路径  后面是jar包的绝对路径</span></span><br><span class="line">ExecStart=/root/java/jdk1.8.0_161/bin/java -jar /root/java/signSet/ams-system-2.6.jar </span><br><span class="line">ExecStop=/bin/<span class="built_in">kill</span> -15 <span class="variable">$MAINPID</span></span><br><span class="line"></span><br><span class="line">User=root</span><br><span class="line">Group=root</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<p>3、刷新 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br></pre></td></tr></table></figure>
+
+<p>4、启动/停止项目</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start xxx.service	<span class="comment">#开始</span></span><br><span class="line">systemctl stop xxx.service	<span class="comment">#停止</span></span><br></pre></td></tr></table></figure>
+
+<p>5、添加/移除开机启动项</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> xxx.service 	<span class="comment">#添加</span></span><br><span class="line">systemctl <span class="built_in">disable</span> xxx.service	<span class="comment">#移除</span></span><br></pre></td></tr></table></figure>
+
+<p>6、查看运行状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status xxx.service</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/工作笔记/">工作笔记</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/jar/">jar</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
     <h3 class="article-title"><a href="/2021/02/24/vue项目打包压缩/"><span>vue项目打包压缩</span></a></h3>
     
   
@@ -635,65 +708,6 @@
     <span class="post-tags">
       <i class="icon-tags"></i>
         <a href="/tags/flutter/">flutter</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2019/11/04/vue-列表展开动态控制/"><span>vue 列表展开动态控制</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2019/11/04/vue-列表展开动态控制/" rel="bookmark">
-        <time class="entry-date published" datetime="2019-11-04T01:52:26.000Z">
-          2019-11-04
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h6 id="1、通过row-class-name方法来实现"><a href="#1、通过row-class-name方法来实现" class="headerlink" title="1、通过row-class-name方法来实现"></a>1、通过row-class-name方法来实现</h6><p><code>&lt;el-table :data=&quot;tableData&quot; :row-class-name=&quot;getRowClassName&quot;&gt;&lt;/el-table&gt;</code></p>
-<h6 id="2、实现方法"><a href="#2、实现方法" class="headerlink" title="2、实现方法"></a>2、实现方法</h6><p><code>getRowClassName({row, rowIndex}){</code></p>
-<p>​    <code>if (row.status === &#39;1&#39;){</code></p>
-<p>​        <code>return &#39;row-expand-cover&#39;;</code></p>
-<p>​    <code>}</code></p>
-<p><code>}</code></p>
-<h6 id="3、通过修改css来达到效果"><a href="#3、通过修改css来达到效果" class="headerlink" title="3、通过修改css来达到效果"></a>3、通过修改css来达到效果</h6><p><code>.row-expand-cover .el-table__expand-icon{visibility:hidden;}</code></p>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/vue/">vue</a>
     </span>
     
 

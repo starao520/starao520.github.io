@@ -65,6 +65,61 @@
 
   
     
+    <h3 class="article-title"><a href="/2019/11/08/flutter-常用插件/"><span>flutter 常用插件</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2019/11/08/flutter-常用插件/" rel="bookmark">
+        <time class="entry-date published" datetime="2019-11-08T06:14:06.000Z">
+          2019-11-08
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h5 id="1、上拉加载，下拉刷新"><a href="#1、上拉加载，下拉刷新" class="headerlink" title="1、上拉加载，下拉刷新"></a>1、上拉加载，下拉刷新</h5><p>插件名称：flutter_easyrefresh</p>
+<p>github地址： <a href="https://github.com/xuelongqy/flutter_easyrefresh" target="_blank" rel="noopener">flutter_easyrefresh</a></p>
+<p>pub地址：    <a href="https://pub.dev/packages/flutter_easyrefresh" target="_blank" rel="noopener">flutter_easyrefresh</a></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/flutter/">flutter</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
     <h3 class="article-title"><a href="/2019/11/04/vue-列表展开动态控制/"><span>vue 列表展开动态控制</span></a></h3>
     
   
@@ -626,63 +681,6 @@
     <span class="post-tags">
       <i class="icon-tags"></i>
         <a href="/tags/docker/">docker</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2019/09/19/vue刷新当前路由/"><span>vue刷新当前路由</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2019/09/19/vue刷新当前路由/" rel="bookmark">
-        <time class="entry-date published" datetime="2019-09-19T08:09:18.000Z">
-          2019-09-19
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>1、在App.vue页面添加一段HTML代码<br>    <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">router-view</span> <span class="attr">v-if</span>=<span class="string">"isRouterAlive"</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>2、在methods自定义reload方法<br>    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">reload () &#123;</span><br><span class="line">	<span class="keyword">this</span>.isRouterAlive = <span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">this</span>.$nextTick(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.isRouterAlive = <span class="literal">true</span></span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>3、添加js代码<br>    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">provide () &#123;</span><br><span class="line">	reload: <span class="keyword">this</span>.reload</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>4、在需要用到的vue页面引用<br>    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">inject: [<span class="string">'reload'</span>]</span><br></pre></td></tr></table></figure></p>
-<p>5、调用刷新的方法<br>    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.reload()</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/vue/">vue</a>
     </span>
     
 

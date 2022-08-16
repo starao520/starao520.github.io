@@ -65,6 +65,65 @@
 
   
     
+    <h3 class="article-title"><a href="/2020/12/21/nginx常见问题/"><span>nginx常见问题</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2020/12/21/nginx常见问题/" rel="bookmark">
+        <time class="entry-date published" datetime="2020-12-21T08:27:44.000Z">
+          2020-12-21
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="1、414-request-uri-too-large"><a href="#1、414-request-uri-too-large" class="headerlink" title="1、414 request-uri too large"></a>1、414 request-uri too large</h2><p>​		在nginx配置(http)中添加</p>
+<p>​		</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">client_header_buffer_size</span> <span class="number">512k</span>; </span><br></pre></td></tr></table></figure>
+
+<p>​		</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">large_client_header_buffers</span> <span class="number">4</span> <span class="number">512k</span>;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/nginx/">nginx</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
     <h3 class="article-title"><a href="/2020/12/14/前端生成SM2公私钥/"><span>前端生成SM2公私钥</span></a></h3>
     
   
@@ -628,67 +687,6 @@
     <span class="post-tags">
       <i class="icon-tags"></i>
         <a href="/tags/nginx/">nginx</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2019/10/14/端口占用处理/"><span>端口占用处理</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2019/10/14/端口占用处理/" rel="bookmark">
-        <time class="entry-date published" datetime="2019-10-14T08:41:04.000Z">
-          2019-10-14
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h6 id="windows-处理方法"><a href="#windows-处理方法" class="headerlink" title="windows 处理方法"></a>windows 处理方法</h6><p>1、找到对应的PID</p>
-<p>​	<code>netstat -aon|findstr &quot;8080&quot;</code></p>
-<p>2、找到具体占用端口的进程名称</p>
-<p>​	<code>tasklist|findstr &quot;12345&quot;</code></p>
-<p>3、通过任务管理器关闭对应进程</p>
-<h6 id="liunx处理方法"><a href="#liunx处理方法" class="headerlink" title="liunx处理方法"></a>liunx处理方法</h6><p>1、找到对应端口</p>
-<p>​	<code>netstat -aon|findstr &quot;8080&quot;</code></p>
-<p>2、关闭对应端口</p>
-<p>​	<code>tasklist|findstr &quot;12345&quot;</code></p>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/端口/">端口</a>
     </span>
     
 

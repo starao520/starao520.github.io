@@ -65,6 +65,62 @@
 
   
     
+    <h3 class="article-title"><a href="/2022/09/05/JWT免密登录/"><span>JWT免密登录</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2022/09/05/JWT免密登录/" rel="bookmark">
+        <time class="entry-date published" datetime="2022-09-05T07:05:18.000Z">
+          2022-09-05
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>JWT免密自动登录</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Authentication</span> <span class="variable">authentication</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UsernamePasswordAuthenticationToken</span>(userDetailsService.loadUserByUsername(user.getUsername()), <span class="string">&quot;&quot;</span>, roleService.getRolesByUser(user.getId()));</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">roleService.getRolesByUser(user.getId()) 返回角色列表</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/JWT/">JWT</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
     <h3 class="article-title"><a href="/2022/08/16/springboot前后端分离打包配置/"><span>springboot前后端分离打包配置</span></a></h3>
     
   
@@ -668,70 +724,6 @@
     <span class="post-tags">
       <i class="icon-tags"></i>
         <a href="/tags/nginx/">nginx</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2020/12/21/vue前端下载base64文件/"><span>vue前端下载base64文件</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2020/12/21/vue前端下载base64文件/" rel="bookmark">
-        <time class="entry-date published" datetime="2020-12-21T08:41:39.000Z">
-          2020-12-21
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="1、单个文件下载"><a href="#1、单个文件下载" class="headerlink" title="1、单个文件下载"></a>1、单个文件下载</h2><h4 id="1-base64转blob"><a href="#1-base64转blob" class="headerlink" title="1.base64转blob"></a>1.base64转blob</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">base64ToBlob</span>(<span class="params">code</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> parts = code.<span class="title function_">split</span>(<span class="string">&#x27;;base64,&#x27;</span>);</span><br><span class="line">  <span class="keyword">let</span> contentType = parts[<span class="number">0</span>].<span class="title function_">split</span>(<span class="string">&#x27;:&#x27;</span>)[<span class="number">1</span>];</span><br><span class="line">  <span class="keyword">let</span> raw = <span class="variable language_">window</span>.<span class="title function_">atob</span>(parts[<span class="number">1</span>]);</span><br><span class="line">  <span class="keyword">let</span> rawLength = raw.<span class="property">length</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> uInt8Array = <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(rawLength);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; rawLength; ++i) &#123;</span><br><span class="line">    uInt8Array[i] = raw.<span class="title function_">charCodeAt</span>(i);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Blob</span>([uInt8Array], &#123;<span class="attr">type</span>: contentType&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-下载文件"><a href="#2-下载文件" class="headerlink" title="2.下载文件"></a>2.下载文件</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">downloadFile</span>(<span class="params">fileName, content</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> aLink = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line">  <span class="comment">//new Blob([content]);</span></span><br><span class="line">  <span class="keyword">let</span> blob = <span class="title function_">base64ToBlob</span>(content); </span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> evt = <span class="variable language_">document</span>.<span class="title function_">createEvent</span>(<span class="string">&quot;HTMLEvents&quot;</span>);</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;点击下载&quot;</span>,evt)</span><br><span class="line">  <span class="comment">//initEvent 不加后两个参数在FF下会报错  事件类型，是否冒泡，是否阻止浏览器的默认行为</span></span><br><span class="line">  evt.<span class="title function_">initEvent</span>(<span class="string">&quot;click&quot;</span>, <span class="literal">true</span>, <span class="literal">true</span>);</span><br><span class="line">  aLink.<span class="property">download</span> = fileName;</span><br><span class="line">  aLink.<span class="property">href</span> = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(blob);</span><br><span class="line">  <span class="comment">// aLink.dispatchEvent(evt);</span></span><br><span class="line">  aLink.<span class="title function_">click</span>()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="2、批量打包下载"><a href="#2、批量打包下载" class="headerlink" title="2、批量打包下载"></a>2、批量打包下载</h2><h4 id="1-需要安装两个依赖"><a href="#1-需要安装两个依赖" class="headerlink" title="1.需要安装两个依赖"></a>1.需要安装两个依赖</h4><p>​	JSZip：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install jszip --save</span><br></pre></td></tr></table></figure>
-
-<p>​	FileSaver:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install file-saver --save</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">batchDown</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">batchList</span>.<span class="property">length</span> === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">$message</span>.<span class="title function_">warning</span>(<span class="string">&#x27;请选择要下载的证书&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 打包下载的文件名</span></span><br><span class="line">  <span class="keyword">const</span> blogTitle = <span class="string">&#x27;证书下载&#x27;</span></span><br><span class="line">  <span class="keyword">const</span> zip = <span class="keyword">new</span> <span class="title class_">JSZip</span>()</span><br><span class="line">  <span class="keyword">const</span> imgs = zip.<span class="title function_">folder</span>(blogTitle)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 遍历要下载的文件对象，这里都是png，可以根据实际情况修改</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> k = <span class="number">0</span>; k &lt; <span class="variable language_">this</span>.<span class="property">batchList</span>.<span class="property">length</span>; k++) &#123;</span><br><span class="line">    imgs.<span class="title function_">file</span>(<span class="variable language_">this</span>.<span class="property">batchList</span>[k].<span class="property">doc_name</span> + <span class="string">&#x27;.png&#x27;</span>, <span class="variable language_">this</span>.<span class="property">batchList</span>[k].<span class="property">doc_data</span>.<span class="title function_">split</span>(<span class="string">&#x27;base64,&#x27;</span>)[<span class="number">1</span>], &#123;</span><br><span class="line">      <span class="attr">base64</span>: <span class="literal">true</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  zip.<span class="title function_">generateAsync</span>(&#123; <span class="attr">type</span>: <span class="string">&#x27;blob&#x27;</span> &#125;).<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">content</span>) &#123;</span><br><span class="line">    <span class="title class_">FileSaver</span>.<span class="title function_">saveAs</span>(content, blogTitle + <span class="string">&#x27;.zip&#x27;</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">dialogVisible</span> = <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/vue/">vue</a>
     </span>
     
 

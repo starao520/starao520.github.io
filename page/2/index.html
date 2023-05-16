@@ -65,6 +65,83 @@
 
   
     
+    <h3 class="article-title"><a href="/2021/02/24/vue项目打包压缩/"><span>vue项目打包压缩</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2021/02/24/vue项目打包压缩/" rel="bookmark">
+        <time class="entry-date published" datetime="2021-02-24T08:49:38.000Z">
+          2021-02-24
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p> 一.安装打包压缩插件(compression-webpack-plugin)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install compression-webpack-plugin --save-dev</span><br></pre></td></tr></table></figure>
+
+<p>二.在vue.config.js文件进行webpack配置</p>
+<p>在chainWebpack中配置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">config.<span class="title function_">plugin</span>(<span class="string">&#x27;compressionPlugin&#x27;</span>)</span><br><span class="line">  .<span class="title function_">use</span>(<span class="keyword">new</span> <span class="title class_">CompressionPlugin</span>(&#123;</span><br><span class="line">    <span class="attr">filename</span>: <span class="string">&#x27;[path][base].gz&#x27;</span>,	<span class="comment">//6.0.0以上版本,以下版本为[path].gz[query]</span></span><br><span class="line">    <span class="attr">algorithm</span>: <span class="string">&#x27;gzip&#x27;</span>,</span><br><span class="line">    <span class="attr">test</span>: productionGzipExtensions,</span><br><span class="line">    <span class="attr">threshold</span>: <span class="number">10240</span>,</span><br><span class="line">    <span class="attr">minRatio</span>: <span class="number">0.8</span>,</span><br><span class="line">    <span class="attr">deleteOriginalAssets</span>: <span class="literal">false</span></span><br><span class="line">  &#125;))</span><br></pre></td></tr></table></figure>
+
+<p>三.修改nginx中gzip配置</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">gzip</span>  <span class="literal">on</span>;</span><br><span class="line"><span class="attribute">gzip_static</span> <span class="literal">on</span>;</span><br><span class="line"><span class="attribute">gzip_min_length</span> <span class="number">1k</span>;</span><br><span class="line"><span class="attribute">gzip_buffers</span> <span class="number">4</span> <span class="number">16k</span>;</span><br><span class="line"><span class="attribute">gzip_comp_level</span> <span class="number">8</span>;</span><br><span class="line"><span class="attribute">gzip_types</span> text/plain application/javascript application/x-javascript text/css application/xml text/javascript application/x-httpd-php image/jpeg image/gif image/png;</span><br><span class="line"><span class="attribute">gzip_vary</span> <span class="literal">on</span>;</span><br><span class="line"><span class="attribute">gzip_disable</span> <span class="string">&quot;MSIE [1-6]\.&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>注:</p>
+<p>nginx中配置gzip_static on提示nginx: [emerg] unknown directive “gzip_static“ in</p>
+<p>此时可用在nginx的安装目录的sbin中使用<code>./nginx -V</code>查看当前nginx的配置信息，看有没有配置<code>--with-http_gzip_static_module</code></p>
+<p>如果没有配置该信息。这时需要我们进入原来的nginx解压的目录中，进行配置并重新安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/local/nginx --with-http_gzip_static_module</span><br><span class="line"></span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/工作笔记/">工作笔记</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/vue/">vue</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
     <h3 class="article-title"><a href="/2021/01/20/mysql按日期统计/"><span>mysql按日期统计</span></a></h3>
     
   
@@ -625,63 +702,6 @@
     <span class="post-tags">
       <i class="icon-tags"></i>
         <a href="/tags/vue/">vue</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2019/10/28/合并代码到master分支/"><span>将dev分支上的代码合并到master分支</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2019/10/28/合并代码到master分支/" rel="bookmark">
-        <time class="entry-date published" datetime="2019-10-28T07:21:20.000Z">
-          2019-10-28
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h6 id="1、切换到master分支"><a href="#1、切换到master分支" class="headerlink" title="1、切换到master分支"></a>1、切换到master分支</h6><p>​	<code>git checkout master</code></p>
-<h6 id="2、拉取最新代码"><a href="#2、拉取最新代码" class="headerlink" title="2、拉取最新代码"></a>2、拉取最新代码</h6><p>​	<code>git pull</code></p>
-<h6 id="3、合并代码"><a href="#3、合并代码" class="headerlink" title="3、合并代码"></a>3、合并代码</h6><p>​	<code>git merge dev</code></p>
-<h6 id="4、查看状态（可查看合并的文件数，即commit数量）"><a href="#4、查看状态（可查看合并的文件数，即commit数量）" class="headerlink" title="4、查看状态（可查看合并的文件数，即commit数量）"></a>4、查看状态（可查看合并的文件数，即commit数量）</h6><p>​	<code>git status</code></p>
-<h6 id="5、将合并后的代码提交到远程master上面"><a href="#5、将合并后的代码提交到远程master上面" class="headerlink" title="5、将合并后的代码提交到远程master上面"></a>5、将合并后的代码提交到远程master上面</h6><p>​	<code>git push</code></p>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/git/">git</a>
     </span>
     
 

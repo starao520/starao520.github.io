@@ -65,6 +65,67 @@
 
   
     
+    <h3 class="article-title"><a href="/2024/04/19/layui默认选中第一行/"><span>layui默认选中第一行</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2024/04/19/layui默认选中第一行/" rel="bookmark">
+        <time class="entry-date published" datetime="2024-04-19T03:16:20.000Z">
+          2024-04-19
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> $firstRow = $(<span class="string">&#x27;#deptTable+div .layui-table-main tr[data-index=&quot;0&quot;]&#x27;</span>);</span><br><span class="line">$firstRow.<span class="title function_">addClass</span>(<span class="string">&#x27;trSelect&#x27;</span>); <span class="comment">// 为第一行添加选中样式</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/工作笔记/">工作笔记</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/layui/">layui</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
     <h3 class="article-title"><a href="/2023/05/16/最基础的logback配置/"><span>最基础的logback配置</span></a></h3>
     
   
@@ -644,79 +705,6 @@
 
 
 
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2021/02/25/jar包开机启动/"><span>jar包开机启动</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2021/02/25/jar包开机启动/" rel="bookmark">
-        <time class="entry-date published" datetime="2021-02-25T09:55:03.000Z">
-          2021-02-25
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>1、进入&#x2F;usr&#x2F;lib&#x2F;systemd&#x2F;system</p>
-<p>2、创建xxx.service</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[Unit]</span><br><span class="line">Description=bing <span class="comment">#描述</span></span><br><span class="line">After=syslog.target network.target  <span class="comment">#依赖</span></span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line"></span><br><span class="line"><span class="comment">#前面是jar包的绝对路径  后面是jar包的绝对路径</span></span><br><span class="line">ExecStart=/root/java/jdk1.8.0_161/bin/java -jar /root/java/signSet/ams-system-2.6.jar </span><br><span class="line">ExecStop=/bin/kill -15 <span class="variable">$MAINPID</span></span><br><span class="line"></span><br><span class="line">User=root</span><br><span class="line">Group=root</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
-
-<p>3、刷新 </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br></pre></td></tr></table></figure>
-
-<p>4、启动&#x2F;停止项目</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start xxx.service	<span class="comment">#开始</span></span><br><span class="line">systemctl stop xxx.service	<span class="comment">#停止</span></span><br></pre></td></tr></table></figure>
-
-<p>5、添加&#x2F;移除开机启动项</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> xxx.service 	<span class="comment">#添加</span></span><br><span class="line">systemctl <span class="built_in">disable</span> xxx.service	<span class="comment">#移除</span></span><br></pre></td></tr></table></figure>
-
-<p>6、查看运行状态</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status xxx.service</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-      
-
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/工作笔记/">工作笔记</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/jar/">jar</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
 
 <nav class="pagination">
   
@@ -732,7 +720,7 @@
     Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
     </br>
     
-    &copy; 2023 starao
+    &copy; 2024 starao
     
   </p>
 </footer>

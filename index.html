@@ -65,6 +65,145 @@
 
   
     
+    <h3 class="article-title"><a href="/2024/05/27/JAVA通过模版导出word或pdf/"><span>JAVA通过模版导出word或pdf</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2024/05/27/JAVA通过模版导出word或pdf/" rel="bookmark">
+        <time class="entry-date published" datetime="2024-05-27T09:33:35.000Z">
+          2024-05-27
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h3 id="主要Java代码"><a href="#主要Java代码" class="headerlink" title="主要Java代码"></a>主要Java代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//模板名称=表单文件+.docx</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">templateUrl</span> <span class="operator">=</span> <span class="string">&quot;templates/view/mqa/credentialManage/credentialTemplates/export/radia.docx&quot;</span>;</span><br><span class="line">            <span class="comment">//word模板文件流 这种方法不会在linux上或者jar启动失效</span></span><br><span class="line">            <span class="type">InputStream</span> <span class="variable">inputStream</span> <span class="operator">=</span> Thread.currentThread().getContextClassLoader().getResourceAsStream(templateUrl);</span><br><span class="line">            <span class="comment">//组装动态表格列表数据</span></span><br><span class="line">            Map&lt;String, Object&gt; bindMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">            List&lt;String&gt; bindListName = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">            <span class="comment">//  组装基础信息</span></span><br><span class="line">            <span class="type">JSONObject</span> <span class="variable">baseObj</span> <span class="operator">=</span> getHealthBaseInfo(userCode);</span><br><span class="line">            bindMap.put(<span class="string">&quot;realName&quot;</span>, baseObj.getString(<span class="string">&quot;realName&quot;</span>));</span><br><span class="line">            bindMap.put(<span class="string">&quot;sex&quot;</span>, baseObj.getString(<span class="string">&quot;sex&quot;</span>));</span><br><span class="line">            bindMap.put(<span class="string">&quot;birthday&quot;</span>, baseObj.getString(<span class="string">&quot;birthday&quot;</span>));</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 职业照射接触史登记</span></span><br><span class="line">            <span class="type">JSONArray</span> <span class="variable">doseHistoryArray</span> <span class="operator">=</span> excelRadiaDoseService.getDoseHistoryByUserCode(userCode);</span><br><span class="line">            <span class="keyword">if</span> (CollectionUtils.isNotEmpty(doseHistoryArray))&#123;</span><br><span class="line">                bindListName.add(<span class="string">&quot;doseHistoryList&quot;</span>);</span><br><span class="line">                bindMap.put(<span class="string">&quot;doseHistoryList&quot;</span>, doseHistoryArray);</span><br><span class="line">            &#125;</span><br><span class="line">    </span><br><span class="line">    		<span class="comment">//	工作经历</span></span><br><span class="line">            List&lt;WorkExperienceApply&gt; list = workExperienceApplyService.getAllWorkExperienceList(paramMap.get(<span class="string">&quot;id&quot;</span>).toString());</span><br><span class="line">            List&lt;Map&lt;String,Object&gt;&gt; workExperienceList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;Map&lt;String,Object&gt;&gt;();</span><br><span class="line">            <span class="keyword">for</span> (WorkExperienceApply workExperienceApply : list) &#123;</span><br><span class="line">                Map&lt;String,Object&gt; detailMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;String, Object&gt;();</span><br><span class="line">                detailMap.put(<span class="string">&quot;hospitalName&quot;</span>, workExperienceApply.getHospitalName());</span><br><span class="line">                detailMap.put(<span class="string">&quot;hospitalLevel&quot;</span>, getHospitalLevelName(workExperienceApply.getHospitalLevel()));</span><br><span class="line">                detailMap.put(<span class="string">&quot;hospitalGrade&quot;</span>, getHospitalGradeName(workExperienceApply.getHospitalGrade()));</span><br><span class="line">                detailMap.put(<span class="string">&quot;deptName&quot;</span>, workExperienceApply.getDeptName());</span><br><span class="line">                detailMap.put(<span class="string">&quot;startTime&quot;</span>, workExperienceApply.getStartTime());</span><br><span class="line">                detailMap.put(<span class="string">&quot;endTime&quot;</span>, workExperienceApply.getEndTime());</span><br><span class="line">                detailMap.put(<span class="string">&quot;witness&quot;</span>, workExperienceApply.getWitness());</span><br><span class="line">                detailMap.put(<span class="string">&quot;telephone&quot;</span>, workExperienceApply.getTelephone());</span><br><span class="line"></span><br><span class="line">                workExperienceList.add(detailMap);</span><br><span class="line">            &#125;</span><br><span class="line">            bindListName.add(<span class="string">&quot;workExperienceList&quot;</span>);</span><br><span class="line">            bindMap.put(<span class="string">&quot;workExperienceList&quot;</span>, workExperienceList);</span><br><span class="line"></span><br><span class="line">            <span class="comment">//  附件</span></span><br><span class="line">            bindMap.put(<span class="string">&quot;personalFilePath&quot;</span>, LOCALHOST_URL + <span class="string">&quot;:&quot;</span> + port + baseObj.getString(<span class="string">&quot;personalFilePath&quot;</span>));</span><br><span class="line">            bindMap.put(<span class="string">&quot;crashEventFilePath&quot;</span>, LOCALHOST_URL + <span class="string">&quot;:&quot;</span> + port + baseObj.getString(<span class="string">&quot;crashEventFilePath&quot;</span>));</span><br><span class="line">            bindMap.put(<span class="string">&quot;radioDiseaseFilePath&quot;</span>, LOCALHOST_URL + <span class="string">&quot;:&quot;</span> + port + baseObj.getString(<span class="string">&quot;radioDiseaseFilePath&quot;</span>));</span><br><span class="line"></span><br><span class="line">            <span class="type">String</span> <span class="variable">time</span> <span class="operator">=</span>  DateUtil.formatFromDate(DateUtil.YYYYMMDDHHMMSS,DateUtil.getCurrentDateTime()) ;</span><br><span class="line">            <span class="comment">//word模板文件流 这种方法不会在linux上或者jar启动失效</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">filename</span> <span class="operator">=</span> baseObj.getString(<span class="string">&quot;realName&quot;</span>)+time+<span class="string">&quot;.docx&quot;</span>;</span><br><span class="line">            <span class="type">String</span> <span class="variable">filepath</span> <span class="operator">=</span> CommonUtil.ExportPath() + filename;</span><br><span class="line">            <span class="comment">//渲染表格</span></span><br><span class="line">            <span class="type">LoopRowTableRenderPolicy</span> <span class="variable">policy</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">LoopRowTableRenderPolicy</span>();</span><br><span class="line">            <span class="type">ConfigureBuilder</span> <span class="variable">configureBuilder</span> <span class="operator">=</span> Configure.builder();</span><br><span class="line"></span><br><span class="line">            <span class="type">Configure</span> <span class="variable">config</span> <span class="operator">=</span> configureBuilder.build();</span><br><span class="line">            <span class="type">XWPFTemplate</span> <span class="variable">template</span> <span class="operator">=</span> XWPFTemplate.compile( inputStream, config).render(bindMap);</span><br><span class="line">            <span class="type">FileOutputStream</span> <span class="variable">fileOutputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(filepath);</span><br><span class="line">            template.write(fileOutputStream);</span><br><span class="line"></span><br><span class="line">            documents4jWordToPdf(filepath, filepath.replace(<span class="string">&quot;.docx&quot;</span>, <span class="string">&quot;.pdf&quot;</span>));</span><br><span class="line">            <span class="type">JSONObject</span> <span class="variable">resultdata</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">JSONObject</span>();</span><br><span class="line">            resultdata.put(<span class="string">&quot;filename&quot;</span>, filename.replace(<span class="string">&quot;.docx&quot;</span>, <span class="string">&quot;.pdf&quot;</span>));</span><br><span class="line">            resultdata.put(<span class="string">&quot;filepath&quot;</span>, <span class="string">&quot;/export/&quot;</span> + filename.replace(<span class="string">&quot;.docx&quot;</span>, <span class="string">&quot;.pdf&quot;</span>)+<span class="string">&quot;?response-content-type=application/octet-stream&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> resultdata;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="word转pdf代码"><a href="#word转pdf代码" class="headerlink" title="word转pdf代码"></a>word转pdf代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">documents4jWordToPdf</span><span class="params">(String sourcePath, String targetPath)</span> &#123;</span><br><span class="line">        <span class="type">File</span> <span class="variable">inputWord</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(sourcePath);</span><br><span class="line">        <span class="type">File</span> <span class="variable">outputFile</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(targetPath);</span><br><span class="line">        <span class="keyword">try</span>  &#123;</span><br><span class="line">            <span class="type">InputStream</span> <span class="variable">docxInputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(inputWord);</span><br><span class="line">            <span class="type">OutputStream</span> <span class="variable">outputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(outputFile);</span><br><span class="line">            <span class="type">IConverter</span> <span class="variable">converter</span> <span class="operator">=</span> LocalConverter.builder().build();</span><br><span class="line">            converter.convert(docxInputStream)</span><br><span class="line">                    .as(DocumentType.DOCX)</span><br><span class="line">                    .to(outputStream)</span><br><span class="line">                    .as(DocumentType.PDF).execute();</span><br><span class="line">            outputStream.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="对应的word模版的样子"><a href="#对应的word模版的样子" class="headerlink" title="对应的word模版的样子"></a>对应的word模版的样子</h3><h4 id="基础信息"><a href="#基础信息" class="headerlink" title="基础信息"></a>基础信息</h4><table>
+<thead>
+<tr>
+<th>基本信息</th>
+<th>姓名</th>
+<th></th>
+<th>性别</th>
+<th></th>
+<th>出生日期</th>
+<th></th>
+</tr>
+</thead>
+</table>
+<h4 id="职业照射接触史登记"><a href="#职业照射接触史登记" class="headerlink" title="职业照射接触史登记"></a>职业照射接触史登记</h4><table>
+<thead>
+<tr>
+<th>起止时间</th>
+<th>所在科室</th>
+<th>接触何种射线</th>
+<th>记录人签字</th>
+</tr>
+</thead>
+</table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;?doseHistoryList&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+</table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;doseHistoryList&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="工作经历"><a href="#工作经历" class="headerlink" title="工作经历"></a>工作经历</h4><table>
+<thead>
+<tr>
+<th></th>
+<th>医院名称</th>
+<th>医院等级</th>
+<th>医院等次</th>
+<th>科室名称</th>
+<th>开始时间</th>
+<th>结束时间</th>
+<th>证明人</th>
+<th>证明人电话</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>进修&#x2F;培训情况</td>
+<td>[hospitalName]</td>
+<td>[hospitalLevel]</td>
+<td>[hospitalGrade]</td>
+<td>[deptName]</td>
+<td>[startTime]</td>
+<td>[endTime]</td>
+<td>[witness]</td>
+<td>[telephone]</td>
+</tr>
+</tbody></table>
+<h4 id="附件"><a href="#附件" class="headerlink" title="附件"></a>附件</h4><table>
+<thead>
+<tr>
+<th>个人剂量监测结果超过5mSv调查报告粘贴处</th>
+<th></th>
+</tr>
+</thead>
+</table>
+<p><span style="color: red;">注：附件主要是图片，要使用完整路径</span></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/学习笔记/">学习笔记</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/pdf-word/">pdf, word</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
     <h3 class="article-title"><a href="/2024/04/26/IDEA配置注释模版/"><span>IDEA配置注释模版</span></a></h3>
     
   
@@ -86,7 +225,7 @@
     <div class="entry">
       
         <h3 id="一、打开类的模版配置"><a href="#一、打开类的模版配置" class="headerlink" title="一、打开类的模版配置"></a>一、打开类的模版配置</h3><p>​	（file ——&gt; setting ——&gt;edit ——&gt; file and code templates）</p>
-<p><img src="C:\Users\facebook47\AppData\Roaming\Typora\typora-user-images\image-20240426162745706.png" alt="image-20240426162745706"></p>
+<p><img src="D:\hexo\source\images\image-20240426162745706.png" alt="image-20240426162745706"></p>
 <p>分别添加Class、Interface、Enum</p>
 <h4 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#<span class="keyword">if</span> ($&#123;PACKAGE_NAME&#125; &amp;&amp; $&#123;PACKAGE_NAME&#125; != <span class="string">&quot;&quot;</span>)<span class="keyword">package</span> $&#123;PACKAGE_NAME&#125;;#end</span><br><span class="line">#parse(<span class="string">&quot;File Header.java&quot;</span>)</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* <span class="doctag">@program</span>: $&#123;PROJECT_NAME&#125;</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@description</span>: this is a class</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@author</span>: facebook47</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@create</span>: $&#123;YEAR&#125;-$&#123;MONTH&#125;-$&#123;DAY&#125; $&#123;HOUR&#125;:$&#123;MINUTE&#125;</span></span><br><span class="line"><span class="comment">**/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">$</span>&#123;NAME&#125; &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -95,17 +234,17 @@
 <h4 id="Enum"><a href="#Enum" class="headerlink" title="Enum"></a>Enum</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#<span class="keyword">if</span> ($&#123;PACKAGE_NAME&#125; &amp;&amp; $&#123;PACKAGE_NAME&#125; != <span class="string">&quot;&quot;</span>)<span class="keyword">package</span> $&#123;PACKAGE_NAME&#125;;#end</span><br><span class="line">#parse(<span class="string">&quot;File Header.java&quot;</span>)</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* <span class="doctag">@program</span>: $&#123;PROJECT_NAME&#125;</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@description</span>: this is a enum</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@author</span>: facebook47</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@create</span>: $&#123;YEAR&#125;-$&#123;MONTH&#125;-$&#123;DAY&#125; $&#123;HOUR&#125;:$&#123;MINUTE&#125;</span></span><br><span class="line"><span class="comment">**/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">$</span>&#123;NAME&#125; &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="二、打开方法配置"><a href="#二、打开方法配置" class="headerlink" title="二、打开方法配置"></a>二、打开方法配置</h3><p>（file ——&gt; setting ——&gt;edit ——&gt; live templates）</p>
-<p><img src="C:\Users\facebook47\AppData\Roaming\Typora\typora-user-images\image-20240426163533092.png" alt="image-20240426163533092"></p>
+<p><img src="D:\hexo\source\images\image-20240426163533092.png" alt="image-20240426163533092"></p>
 <p>分别添加组和模版</p>
-<h4 id="组（group）"><a href="#组（group）" class="headerlink" title="组（group）"></a>组（group）</h4><p><img src="C:\Users\facebook47\AppData\Roaming\Typora\typora-user-images\image-20240426163800434.png" alt="image-20240426163800434"></p>
-<h4 id="模版（template）"><a href="#模版（template）" class="headerlink" title="模版（template）"></a>模版（template）</h4><p><img src="C:\Users\facebook47\AppData\Roaming\Typora\typora-user-images\image-20240426164000394.png" alt="image-20240426164000394"></p>
+<h4 id="组（group）"><a href="#组（group）" class="headerlink" title="组（group）"></a>组（group）</h4><p><img src="D:\hexo\source\images\image-20240426163800434.png" alt="image-20240426163800434"></p>
+<h4 id="模版（template）"><a href="#模版（template）" class="headerlink" title="模版（template）"></a>模版（template）</h4><p><img src="D:\hexo\source\images\image-20240426164000394.png" alt="image-20240426164000394"></p>
 <p>添加模版内容</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">**</span><br><span class="line">* <span class="meta">@Description</span>: $description$</span><br><span class="line">* <span class="meta">@Param</span>: $params$</span><br><span class="line">* <span class="meta">@return</span>: $returns$</span><br><span class="line">* <span class="meta">@Author</span>: facebook47</span><br><span class="line">* <span class="meta">@Date</span>: $date$</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
 
-<h4 id="配置属性对应的内容"><a href="#配置属性对应的内容" class="headerlink" title="配置属性对应的内容"></a>配置属性对应的内容</h4><p><img src="C:\Users\facebook47\AppData\Roaming\Typora\typora-user-images\image-20240426164407438.png" alt="image-20240426164407438"></p>
-<p><img src="C:\Users\facebook47\AppData\Roaming\Typora\typora-user-images\image-20240426164426995.png" alt="image-20240426164426995"></p>
+<h4 id="配置属性对应的内容"><a href="#配置属性对应的内容" class="headerlink" title="配置属性对应的内容"></a>配置属性对应的内容</h4><p><img src="D:\hexo\source\images\image-20240426164407438.png" alt="image-20240426164407438"></p>
+<p><img src="D:\hexo\source\images\image-20240426164426995.png" alt="image-20240426164426995"></p>
 <h4 id="选择对应的语言"><a href="#选择对应的语言" class="headerlink" title="选择对应的语言"></a>选择对应的语言</h4><p>最后点击下面的change</p>
-<p><img src="C:\Users\facebook47\AppData\Roaming\Typora\typora-user-images\image-20240426164513722.png" alt="image-20240426164513722"></p>
+<p><img src="D:\hexo\source\images\image-20240426164513722.png" alt="image-20240426164513722"></p>
 
       
     </div>
@@ -629,64 +768,6 @@
       <i class="icon-tags"></i>
         <a href="/tags/html-vue/">html vue</a>
     </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2022/07/23/hello-world/"><span>Hello World</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2022/07/23/hello-world/" rel="bookmark">
-        <time class="entry-date published" datetime="2022-07-23T06:59:18.149Z">
-          2022-07-23
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
     
 
     </div>

@@ -150,7 +150,7 @@
   <div class="article-content">
     <div class="entry">
       
-        <p>1、去git下载redis压缩包（redis-6.2.0.tar.gz）并放到    /usr/local/src    目录</p>
+        <p>1、去git下载redis压缩包（redis-6.2.0.tar.gz）并放到	&#x2F;usr&#x2F;local&#x2F;src	目录</p>
 <p>2、解压</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/local/src</span><br><span class="line">tar -xzf redis-6.2.0.tar.gz</span><br></pre></td></tr></table></figure>
 
@@ -238,17 +238,17 @@
   <div class="article-content">
     <div class="entry">
       
-        <p>1、进入/usr/lib/systemd/system</p>
+        <p>1、进入&#x2F;usr&#x2F;lib&#x2F;systemd&#x2F;system</p>
 <p>2、创建xxx.service</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[Unit]</span><br><span class="line">Description=bing <span class="comment">#描述</span></span><br><span class="line">After=syslog.target network.target  <span class="comment">#依赖</span></span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line"></span><br><span class="line"><span class="comment">#前面是jar包的绝对路径  后面是jar包的绝对路径</span></span><br><span class="line">ExecStart=/root/java/jdk1.8.0_161/bin/java -jar /root/java/signSet/ams-system-2.6.jar </span><br><span class="line">ExecStop=/bin/kill -15 <span class="variable">$MAINPID</span></span><br><span class="line"></span><br><span class="line">User=root</span><br><span class="line">Group=root</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
 
 <p>3、刷新 </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br></pre></td></tr></table></figure>
 
-<p>4、启动/停止项目</p>
+<p>4、启动&#x2F;停止项目</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl start xxx.service	<span class="comment">#开始</span></span><br><span class="line">systemctl stop xxx.service	<span class="comment">#停止</span></span><br><span class="line">systemctl restart xxx.service <span class="comment">#重启</span></span><br></pre></td></tr></table></figure>
 
-<p>5、添加/移除开机启动项</p>
+<p>5、添加&#x2F;移除开机启动项</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> xxx.service 	<span class="comment">#添加</span></span><br><span class="line">systemctl <span class="built_in">disable</span> xxx.service	<span class="comment">#移除</span></span><br></pre></td></tr></table></figure>
 
 <p>6、查看运行状态</p>
@@ -514,16 +514,16 @@
   <div class="article-content">
     <div class="entry">
       
-        <h2 id="1、停止Nginx服务的四种方法"><a href="#1、停止Nginx服务的四种方法" class="headerlink" title="1、停止Nginx服务的四种方法"></a>1、停止Nginx服务的四种方法</h2><h3 id="1-从容停止服务"><a href="#1-从容停止服务" class="headerlink" title="1.从容停止服务"></a>1.从容停止服务</h3><p>​        这种方法较stop相比就比较温和一些了，需要进程完成当前工作后再停止。</p>
+        <h2 id="1、停止Nginx服务的四种方法"><a href="#1、停止Nginx服务的四种方法" class="headerlink" title="1、停止Nginx服务的四种方法"></a>1、停止Nginx服务的四种方法</h2><h3 id="1-从容停止服务"><a href="#1-从容停止服务" class="headerlink" title="1.从容停止服务"></a>1.从容停止服务</h3><p>​		这种方法较stop相比就比较温和一些了，需要进程完成当前工作后再停止。</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">nginx</span> -s quit</span><br></pre></td></tr></table></figure>
 
-<h3 id="2-立即停止服务"><a href="#2-立即停止服务" class="headerlink" title="2.立即停止服务"></a>2.立即停止服务</h3><p>​        这种方法比较强硬，无论进程是否在工作，都直接停止进程。</p>
+<h3 id="2-立即停止服务"><a href="#2-立即停止服务" class="headerlink" title="2.立即停止服务"></a>2.立即停止服务</h3><p>​		这种方法比较强硬，无论进程是否在工作，都直接停止进程。</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">nginx</span> -s stop</span><br></pre></td></tr></table></figure>
 
-<h3 id="3-systemctl-停止"><a href="#3-systemctl-停止" class="headerlink" title="3.systemctl 停止"></a>3.systemctl 停止</h3><p>​        systemctl属于Linux命令</p>
+<h3 id="3-systemctl-停止"><a href="#3-systemctl-停止" class="headerlink" title="3.systemctl 停止"></a>3.systemctl 停止</h3><p>​		systemctl属于Linux命令</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop nginx.service</span><br></pre></td></tr></table></figure>
 
-<h3 id="4-killall-方法杀死进程"><a href="#4-killall-方法杀死进程" class="headerlink" title="4.killall 方法杀死进程"></a>4.killall 方法杀死进程</h3><p>​        直接杀死进程，在上面无效的情况下使用，态度强硬，简单粗暴！</p>
+<h3 id="4-killall-方法杀死进程"><a href="#4-killall-方法杀死进程" class="headerlink" title="4.killall 方法杀死进程"></a>4.killall 方法杀死进程</h3><p>​		直接杀死进程，在上面无效的情况下使用，态度强硬，简单粗暴！</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">killall nginx</span><br></pre></td></tr></table></figure>
 
 
@@ -598,10 +598,10 @@
 
 
 
-<h2 id="2、批量打包下载"><a href="#2、批量打包下载" class="headerlink" title="2、批量打包下载"></a>2、批量打包下载</h2><h4 id="1-需要安装两个依赖"><a href="#1-需要安装两个依赖" class="headerlink" title="1.需要安装两个依赖"></a>1.需要安装两个依赖</h4><p>​    JSZip：</p>
+<h2 id="2、批量打包下载"><a href="#2、批量打包下载" class="headerlink" title="2、批量打包下载"></a>2、批量打包下载</h2><h4 id="1-需要安装两个依赖"><a href="#1-需要安装两个依赖" class="headerlink" title="1.需要安装两个依赖"></a>1.需要安装两个依赖</h4><p>​	JSZip：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install jszip --save</span><br></pre></td></tr></table></figure>
 
-<p>​    FileSaver:</p>
+<p>​	FileSaver:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install file-saver --save</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">batchDown</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">batchList</span>.<span class="property">length</span> === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">$message</span>.<span class="title function_">warning</span>(<span class="string">&#x27;请选择要下载的证书&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 打包下载的文件名</span></span><br><span class="line">  <span class="keyword">const</span> blogTitle = <span class="string">&#x27;证书下载&#x27;</span></span><br><span class="line">  <span class="keyword">const</span> zip = <span class="keyword">new</span> <span class="title class_">JSZip</span>()</span><br><span class="line">  <span class="keyword">const</span> imgs = zip.<span class="title function_">folder</span>(blogTitle)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 遍历要下载的文件对象，这里都是png，可以根据实际情况修改</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> k = <span class="number">0</span>; k &lt; <span class="variable language_">this</span>.<span class="property">batchList</span>.<span class="property">length</span>; k++) &#123;</span><br><span class="line">    imgs.<span class="title function_">file</span>(<span class="variable language_">this</span>.<span class="property">batchList</span>[k].<span class="property">doc_name</span> + <span class="string">&#x27;.png&#x27;</span>, <span class="variable language_">this</span>.<span class="property">batchList</span>[k].<span class="property">doc_data</span>.<span class="title function_">split</span>(<span class="string">&#x27;base64,&#x27;</span>)[<span class="number">1</span>], &#123;</span><br><span class="line">      <span class="attr">base64</span>: <span class="literal">true</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  zip.<span class="title function_">generateAsync</span>(&#123; <span class="attr">type</span>: <span class="string">&#x27;blob&#x27;</span> &#125;).<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">content</span>) &#123;</span><br><span class="line">    <span class="title class_">FileSaver</span>.<span class="title function_">saveAs</span>(content, blogTitle + <span class="string">&#x27;.zip&#x27;</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">dialogVisible</span> = <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -656,11 +656,11 @@
   <div class="article-content">
     <div class="entry">
       
-        <h2 id="1、414-request-uri-too-large"><a href="#1、414-request-uri-too-large" class="headerlink" title="1、414 request-uri too large"></a>1、414 request-uri too large</h2><p>​        在nginx配置(http)中添加</p>
-<p>​        </p>
+        <h2 id="1、414-request-uri-too-large"><a href="#1、414-request-uri-too-large" class="headerlink" title="1、414 request-uri too large"></a>1、414 request-uri too large</h2><p>​		在nginx配置(http)中添加</p>
+<p>​		</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">client_header_buffer_size</span> <span class="number">512k</span>; </span><br></pre></td></tr></table></figure>
 
-<p>​        </p>
+<p>​		</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">large_client_header_buffers</span> <span class="number">4</span> <span class="number">512k</span>;</span><br></pre></td></tr></table></figure>
 
 

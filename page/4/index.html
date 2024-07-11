@@ -86,28 +86,28 @@
     <div class="entry">
       
         <h3 id="操作环境为centOS7"><a href="#操作环境为centOS7" class="headerlink" title="操作环境为centOS7"></a>操作环境为centOS7</h3><p>1、下载代码到指定目录</p>
-<p>​    <code>get clone xxx.git</code></p>
+<p>​	<code>get clone xxx.git</code></p>
 <p>2、进入到项目根目录</p>
-<p>​    <code>cd /xxx</code></p>
+<p>​	<code>cd /xxx</code></p>
 <p>3、将打包好的服务（server.jar）放在根目录下</p>
 <p>4、创建Dockerfile文件</p>
-<p>​    <code>vim Dockerfile</code></p>
-<p>​        <code>#获取对应jdk</code></p>
-<p>​        <code>FROM yuanziqiang1995/openjdk-maven:3.0</code></p>
-<p>​        <code>#添加打包好的jar包，并重命名</code></p>
-<p>​        <code>ADD server.jar ams-center.jar</code></p>
-<p>​        <code>#设置对应的端口号，与服务的yml文件相对应</code></p>
-<p>​        <code>EXPOSE 8080</code></p>
-<p>​        <code>#生成docker入口</code></p>
-<p>​        <code>ENTRYPOINT [&quot;java&quot;, &quot;-Djava.security.egd=file:/dev/./urandom&quot;, &quot;-jar&quot;, &quot;ams-                        center.jar&quot;]</code></p>
+<p>​	<code>vim Dockerfile</code></p>
+<p>​		<code>#获取对应jdk</code></p>
+<p>​		<code>FROM yuanziqiang1995/openjdk-maven:3.0</code></p>
+<p>​		<code>#添加打包好的jar包，并重命名</code></p>
+<p>​		<code>ADD server.jar ams-center.jar</code></p>
+<p>​		<code>#设置对应的端口号，与服务的yml文件相对应</code></p>
+<p>​		<code>EXPOSE 8080</code></p>
+<p>​		<code>#生成docker入口</code></p>
+<p>​		<code>ENTRYPOINT [&quot;java&quot;, &quot;-Djava.security.egd=file:/dev/./urandom&quot;, &quot;-jar&quot;, &quot;ams-						center.jar&quot;]</code></p>
 <p>5、修改项目的pom.xml文件</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- tag::plugin[] --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.spotify<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>docker-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>0.4.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">imageName</span>&gt;</span>$&#123;docker.image.prefix&#125;/$&#123;project.artifactId&#125;<span class="tag">&lt;/<span class="name">imageName</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">dockerDirectory</span>&gt;</span>src/main/docker<span class="tag">&lt;/<span class="name">dockerDirectory</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">						<span class="tag">&lt;<span class="name">targetPath</span>&gt;</span>/<span class="tag">&lt;/<span class="name">targetPath</span>&gt;</span></span><br><span class="line">						<span class="tag">&lt;<span class="name">directory</span>&gt;</span>$&#123;project.build.directory&#125;<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">						<span class="tag">&lt;<span class="name">include</span>&gt;</span>$&#123;project.build.finalName&#125;.jar<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- end::plugin[] --&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>6、对项目进行编译</p>
-<p>​    <code>docker build -t ams-center .</code>#后面有个.</p>
+<p>​	<code>docker build -t ams-center .</code>#后面有个.</p>
 <p>7、执行打包的docker</p>
-<p>​    <code>docker run -p 8080:8080 --name ams-center ams-center:latest</code></p>
+<p>​	<code>docker run -p 8080:8080 --name ams-center ams-center:latest</code></p>
 <p>8、查看是否成功</p>
-<p>​    <code>docker ps</code></p>
+<p>​	<code>docker ps</code></p>
 
       
     </div>

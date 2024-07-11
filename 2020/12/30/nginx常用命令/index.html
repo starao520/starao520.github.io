@@ -87,16 +87,16 @@
   <div class="article-content">
     <div class="entry">
       
-        <h2 id="1、停止Nginx服务的四种方法"><a href="#1、停止Nginx服务的四种方法" class="headerlink" title="1、停止Nginx服务的四种方法"></a>1、停止Nginx服务的四种方法</h2><h3 id="1-从容停止服务"><a href="#1-从容停止服务" class="headerlink" title="1.从容停止服务"></a>1.从容停止服务</h3><p>​        这种方法较stop相比就比较温和一些了，需要进程完成当前工作后再停止。</p>
+        <h2 id="1、停止Nginx服务的四种方法"><a href="#1、停止Nginx服务的四种方法" class="headerlink" title="1、停止Nginx服务的四种方法"></a>1、停止Nginx服务的四种方法</h2><h3 id="1-从容停止服务"><a href="#1-从容停止服务" class="headerlink" title="1.从容停止服务"></a>1.从容停止服务</h3><p>​		这种方法较stop相比就比较温和一些了，需要进程完成当前工作后再停止。</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">nginx</span> -s quit</span><br></pre></td></tr></table></figure>
 
-<h3 id="2-立即停止服务"><a href="#2-立即停止服务" class="headerlink" title="2.立即停止服务"></a>2.立即停止服务</h3><p>​        这种方法比较强硬，无论进程是否在工作，都直接停止进程。</p>
+<h3 id="2-立即停止服务"><a href="#2-立即停止服务" class="headerlink" title="2.立即停止服务"></a>2.立即停止服务</h3><p>​		这种方法比较强硬，无论进程是否在工作，都直接停止进程。</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">nginx</span> -s stop</span><br></pre></td></tr></table></figure>
 
-<h3 id="3-systemctl-停止"><a href="#3-systemctl-停止" class="headerlink" title="3.systemctl 停止"></a>3.systemctl 停止</h3><p>​        systemctl属于Linux命令</p>
+<h3 id="3-systemctl-停止"><a href="#3-systemctl-停止" class="headerlink" title="3.systemctl 停止"></a>3.systemctl 停止</h3><p>​		systemctl属于Linux命令</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop nginx.service</span><br></pre></td></tr></table></figure>
 
-<h3 id="4-killall-方法杀死进程"><a href="#4-killall-方法杀死进程" class="headerlink" title="4.killall 方法杀死进程"></a>4.killall 方法杀死进程</h3><p>​        直接杀死进程，在上面无效的情况下使用，态度强硬，简单粗暴！</p>
+<h3 id="4-killall-方法杀死进程"><a href="#4-killall-方法杀死进程" class="headerlink" title="4.killall 方法杀死进程"></a>4.killall 方法杀死进程</h3><p>​		直接杀死进程，在上面无效的情况下使用，态度强硬，简单粗暴！</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">killall nginx</span><br></pre></td></tr></table></figure>
 
 

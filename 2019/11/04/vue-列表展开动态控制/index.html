@@ -89,9 +89,9 @@
       
         <h6 id="1、通过row-class-name方法来实现"><a href="#1、通过row-class-name方法来实现" class="headerlink" title="1、通过row-class-name方法来实现"></a>1、通过row-class-name方法来实现</h6><p><code>&lt;el-table :data=&quot;tableData&quot; :row-class-name=&quot;getRowClassName&quot;&gt;&lt;/el-table&gt;</code></p>
 <h6 id="2、实现方法"><a href="#2、实现方法" class="headerlink" title="2、实现方法"></a>2、实现方法</h6><p><code>getRowClassName(&#123;row, rowIndex&#125;)&#123;</code></p>
-<p>​    <code>if (row.status === &#39;1&#39;)&#123;</code></p>
-<p>​        <code>return &#39;row-expand-cover&#39;;</code></p>
-<p>​    <code>&#125;</code></p>
+<p>​	<code>if (row.status === &#39;1&#39;)&#123;</code></p>
+<p>​		<code>return &#39;row-expand-cover&#39;;</code></p>
+<p>​	<code>&#125;</code></p>
 <p><code>&#125;</code></p>
 <h6 id="3、通过修改css来达到效果"><a href="#3、通过修改css来达到效果" class="headerlink" title="3、通过修改css来达到效果"></a>3、通过修改css来达到效果</h6><p><code>.row-expand-cover .el-table__expand-icon&#123;visibility:hidden;&#125;</code></p>
 

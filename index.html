@@ -203,7 +203,7 @@
 </tr>
 </thead>
 <tbody><tr>
-<td>进修/培训情况</td>
+<td>进修&#x2F;培训情况</td>
 <td>[hospitalName]</td>
 <td>[hospitalLevel]</td>
 <td>[hospitalGrade]</td>
@@ -282,8 +282,8 @@
   <div class="article-content">
     <div class="entry">
       
-        <h3 id="一、打开类的模版配置"><a href="#一、打开类的模版配置" class="headerlink" title="一、打开类的模版配置"></a>一、打开类的模版配置</h3><p>​    （file ——&gt; setting ——&gt;edit ——&gt; file and code templates）</p>
-<p><img src="D:%5Chexo%5Csource%5Cimages%5Cimage-20240426162745706.png" alt="image-20240426162745706"></p>
+        <h3 id="一、打开类的模版配置"><a href="#一、打开类的模版配置" class="headerlink" title="一、打开类的模版配置"></a>一、打开类的模版配置</h3><p>​	（file ——&gt; setting ——&gt;edit ——&gt; file and code templates）</p>
+<p><img src="D:\hexo\source\images\image-20240426162745706.png" alt="image-20240426162745706"></p>
 <p>分别添加Class、Interface、Enum</p>
 <h4 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#<span class="keyword">if</span> ($&#123;PACKAGE_NAME&#125; &amp;&amp; $&#123;PACKAGE_NAME&#125; != <span class="string">&quot;&quot;</span>)<span class="keyword">package</span> $&#123;PACKAGE_NAME&#125;;#end</span><br><span class="line">#parse(<span class="string">&quot;File Header.java&quot;</span>)</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* <span class="doctag">@program</span>: $&#123;PROJECT_NAME&#125;</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@description</span>: this is a class</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@author</span>: facebook47</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@create</span>: $&#123;YEAR&#125;-$&#123;MONTH&#125;-$&#123;DAY&#125; $&#123;HOUR&#125;:$&#123;MINUTE&#125;</span></span><br><span class="line"><span class="comment">**/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">$</span>&#123;NAME&#125; &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -292,17 +292,17 @@
 <h4 id="Enum"><a href="#Enum" class="headerlink" title="Enum"></a>Enum</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#<span class="keyword">if</span> ($&#123;PACKAGE_NAME&#125; &amp;&amp; $&#123;PACKAGE_NAME&#125; != <span class="string">&quot;&quot;</span>)<span class="keyword">package</span> $&#123;PACKAGE_NAME&#125;;#end</span><br><span class="line">#parse(<span class="string">&quot;File Header.java&quot;</span>)</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* <span class="doctag">@program</span>: $&#123;PROJECT_NAME&#125;</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@description</span>: this is a enum</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@author</span>: facebook47</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@create</span>: $&#123;YEAR&#125;-$&#123;MONTH&#125;-$&#123;DAY&#125; $&#123;HOUR&#125;:$&#123;MINUTE&#125;</span></span><br><span class="line"><span class="comment">**/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">$</span>&#123;NAME&#125; &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="二、打开方法配置"><a href="#二、打开方法配置" class="headerlink" title="二、打开方法配置"></a>二、打开方法配置</h3><p>（file ——&gt; setting ——&gt;edit ——&gt; live templates）</p>
-<p><img src="D:%5Chexo%5Csource%5Cimages%5Cimage-20240426163533092.png" alt="image-20240426163533092"></p>
+<p><img src="D:\hexo\source\images\image-20240426163533092.png" alt="image-20240426163533092"></p>
 <p>分别添加组和模版</p>
-<h4 id="组（group）"><a href="#组（group）" class="headerlink" title="组（group）"></a>组（group）</h4><p><img src="D:%5Chexo%5Csource%5Cimages%5Cimage-20240426163800434.png" alt="image-20240426163800434"></p>
-<h4 id="模版（template）"><a href="#模版（template）" class="headerlink" title="模版（template）"></a>模版（template）</h4><p><img src="D:%5Chexo%5Csource%5Cimages%5Cimage-20240426164000394.png" alt="image-20240426164000394"></p>
+<h4 id="组（group）"><a href="#组（group）" class="headerlink" title="组（group）"></a>组（group）</h4><p><img src="D:\hexo\source\images\image-20240426163800434.png" alt="image-20240426163800434"></p>
+<h4 id="模版（template）"><a href="#模版（template）" class="headerlink" title="模版（template）"></a>模版（template）</h4><p><img src="D:\hexo\source\images\image-20240426164000394.png" alt="image-20240426164000394"></p>
 <p>添加模版内容</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">**</span><br><span class="line">* <span class="meta">@Description</span>: $description$</span><br><span class="line">* <span class="meta">@Param</span>: $params$</span><br><span class="line">* <span class="meta">@return</span>: $returns$</span><br><span class="line">* <span class="meta">@Author</span>: facebook47</span><br><span class="line">* <span class="meta">@Date</span>: $date$</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
 
-<h4 id="配置属性对应的内容"><a href="#配置属性对应的内容" class="headerlink" title="配置属性对应的内容"></a>配置属性对应的内容</h4><p><img src="D:%5Chexo%5Csource%5Cimages%5Cimage-20240426164407438.png" alt="image-20240426164407438"></p>
-<p><img src="D:%5Chexo%5Csource%5Cimages%5Cimage-20240426164426995.png" alt="image-20240426164426995"></p>
+<h4 id="配置属性对应的内容"><a href="#配置属性对应的内容" class="headerlink" title="配置属性对应的内容"></a>配置属性对应的内容</h4><p><img src="D:\hexo\source\images\image-20240426164407438.png" alt="image-20240426164407438"></p>
+<p><img src="D:\hexo\source\images\image-20240426164426995.png" alt="image-20240426164426995"></p>
 <h4 id="选择对应的语言"><a href="#选择对应的语言" class="headerlink" title="选择对应的语言"></a>选择对应的语言</h4><p>最后点击下面的change</p>
-<p><img src="D:%5Chexo%5Csource%5Cimages%5Cimage-20240426164513722.png" alt="image-20240426164513722"></p>
+<p><img src="D:\hexo\source\images\image-20240426164513722.png" alt="image-20240426164513722"></p>
 
       
     </div>

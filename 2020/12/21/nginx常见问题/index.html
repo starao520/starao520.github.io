@@ -87,11 +87,11 @@
   <div class="article-content">
     <div class="entry">
       
-        <h2 id="1、414-request-uri-too-large"><a href="#1、414-request-uri-too-large" class="headerlink" title="1、414 request-uri too large"></a>1、414 request-uri too large</h2><p>​        在nginx配置(http)中添加</p>
-<p>​        </p>
+        <h2 id="1、414-request-uri-too-large"><a href="#1、414-request-uri-too-large" class="headerlink" title="1、414 request-uri too large"></a>1、414 request-uri too large</h2><p>​		在nginx配置(http)中添加</p>
+<p>​		</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">client_header_buffer_size</span> <span class="number">512k</span>; </span><br></pre></td></tr></table></figure>
 
-<p>​        </p>
+<p>​		</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">large_client_header_buffers</span> <span class="number">4</span> <span class="number">512k</span>;</span><br></pre></td></tr></table></figure>
 
 

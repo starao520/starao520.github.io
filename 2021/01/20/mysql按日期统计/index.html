@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>mysql按日期统计 | 列侬,你变了</title>
+
+  
+  <meta name="author" content="starao">
+  
+
+  
+  <meta name="description" content="工作学习小记">
+  
+
+  
+  
+  <meta name="keywords" content="mysql">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="mysql按日期统计"/>
+
+  <meta property="og:site_name" content="列侬,你变了"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="列侬,你变了" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">列侬,你变了</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+        <li><a href="/tags">标签</a></li>
+      
+        <li><a href="/about">关于</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>mysql按日期统计</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2021/01/20/mysql按日期统计/" rel="bookmark">
+        <time class="entry-date published" datetime="2021-01-20T10:26:09.000Z">
+          2021-01-20
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	count( u.id ) AS count,</span><br><span class="line">	s.date </span><br><span class="line">FROM</span><br><span class="line">	(</span><br><span class="line">SELECT</span><br><span class="line">	date_add(&#x27;2021-01-20&#x27;,interval @i:=@i+1 day) as date</span><br><span class="line">	</span><br><span class="line">FROM</span><br><span class="line">	( SELECT 1 &lt;foreach item = &quot;index&quot; collection = &quot;differDays&quot; &gt; UNION ALL SELECT 1 &lt;/foreach&gt; ) AS tmp,</span><br><span class="line">	( SELECT @i := - 1 ) t </span><br><span class="line">	) s</span><br><span class="line">	LEFT JOIN sys_bus u ON s.date = date_format( u.create_time, &#x27;%Y-%m-%d&#x27; ) </span><br><span class="line">	AND u.reg_status = &#x27;2&#x27; </span><br><span class="line">GROUP BY</span><br><span class="line">s.date</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">differDays:	要统计的日期天数</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2021</span>-<span class="number">01</span>-<span class="number">20</span>:	设定的一个开始日期</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/工作笔记/">工作笔记</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/mysql/">mysql</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2024 starao
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

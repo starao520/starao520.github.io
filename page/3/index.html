@@ -1,0 +1,719 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>第 3 页 | 列侬,你变了</title>
+
+  
+  <meta name="author" content="starao">
+  
+
+  
+  <meta name="description" content="工作学习小记">
+  
+
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  
+
+  <meta property="og:site_name" content="列侬,你变了"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="列侬,你变了" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">列侬,你变了</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+        <li><a href="/tags">标签</a></li>
+      
+        <li><a href="/about">关于</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2020/12/14/java图片转base64/"><span>java图片转base64</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2020/12/14/java图片转base64/" rel="bookmark">
+        <time class="entry-date published" datetime="2020-12-14T02:50:41.000Z">
+          2020-12-14
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">BASE64Encoder</span> <span class="variable">bEncoder</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BASE64Encoder</span>();</span><br><span class="line">String[] suffixArra = file.getOriginalFilename().split(<span class="string">&quot;\\.&quot;</span>);</span><br><span class="line"><span class="type">String</span> <span class="variable">preffix</span> <span class="operator">=</span> <span class="string">&quot;data:image/jpg;base64,&quot;</span>.replace(<span class="string">&quot;jpg&quot;</span>, suffixArra[suffixArra.length - <span class="number">1</span>]);</span><br><span class="line"><span class="type">String</span> <span class="variable">base64EncoderImg</span> <span class="operator">=</span> preffix + bEncoder.encode(file.getBytes()).replaceAll(<span class="string">&quot;[\\s*\t\n\r]&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/笔记/">笔记</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/java/">java</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2019/11/08/flutter-常用插件/"><span>flutter 常用插件</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2019/11/08/flutter-常用插件/" rel="bookmark">
+        <time class="entry-date published" datetime="2019-11-08T06:14:06.000Z">
+          2019-11-08
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h5 id="1、上拉加载，下拉刷新"><a href="#1、上拉加载，下拉刷新" class="headerlink" title="1、上拉加载，下拉刷新"></a>1、上拉加载，下拉刷新</h5><p>插件名称：flutter_easyrefresh</p>
+<p>github地址： <a href="https://github.com/xuelongqy/flutter_easyrefresh">flutter_easyrefresh</a></p>
+<p>pub地址：    <a href="https://pub.dev/packages/flutter_easyrefresh">flutter_easyrefresh</a></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/flutter/">flutter</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2019/11/04/vue-列表展开动态控制/"><span>vue 列表展开动态控制</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2019/11/04/vue-列表展开动态控制/" rel="bookmark">
+        <time class="entry-date published" datetime="2019-11-04T01:52:26.000Z">
+          2019-11-04
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h6 id="1、通过row-class-name方法来实现"><a href="#1、通过row-class-name方法来实现" class="headerlink" title="1、通过row-class-name方法来实现"></a>1、通过row-class-name方法来实现</h6><p><code>&lt;el-table :data=&quot;tableData&quot; :row-class-name=&quot;getRowClassName&quot;&gt;&lt;/el-table&gt;</code></p>
+<h6 id="2、实现方法"><a href="#2、实现方法" class="headerlink" title="2、实现方法"></a>2、实现方法</h6><p><code>getRowClassName(&#123;row, rowIndex&#125;)&#123;</code></p>
+<p>​    <code>if (row.status === &#39;1&#39;)&#123;</code></p>
+<p>​        <code>return &#39;row-expand-cover&#39;;</code></p>
+<p>​    <code>&#125;</code></p>
+<p><code>&#125;</code></p>
+<h6 id="3、通过修改css来达到效果"><a href="#3、通过修改css来达到效果" class="headerlink" title="3、通过修改css来达到效果"></a>3、通过修改css来达到效果</h6><p><code>.row-expand-cover .el-table__expand-icon&#123;visibility:hidden;&#125;</code></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/vue/">vue</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2019/10/28/合并代码到master分支/"><span>将dev分支上的代码合并到master分支</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2019/10/28/合并代码到master分支/" rel="bookmark">
+        <time class="entry-date published" datetime="2019-10-28T07:21:20.000Z">
+          2019-10-28
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h6 id="1、切换到master分支"><a href="#1、切换到master分支" class="headerlink" title="1、切换到master分支"></a>1、切换到master分支</h6><p>​    <code>git checkout master</code></p>
+<h6 id="2、拉取最新代码"><a href="#2、拉取最新代码" class="headerlink" title="2、拉取最新代码"></a>2、拉取最新代码</h6><p>​    <code>git pull</code></p>
+<h6 id="3、合并代码"><a href="#3、合并代码" class="headerlink" title="3、合并代码"></a>3、合并代码</h6><p>​    <code>git merge dev</code></p>
+<h6 id="4、查看状态（可查看合并的文件数，即commit数量）"><a href="#4、查看状态（可查看合并的文件数，即commit数量）" class="headerlink" title="4、查看状态（可查看合并的文件数，即commit数量）"></a>4、查看状态（可查看合并的文件数，即commit数量）</h6><p>​    <code>git status</code></p>
+<h6 id="5、将合并后的代码提交到远程master上面"><a href="#5、将合并后的代码提交到远程master上面" class="headerlink" title="5、将合并后的代码提交到远程master上面"></a>5、将合并后的代码提交到远程master上面</h6><p>​    <code>git push</code></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/git/">git</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2019/10/24/vue子页面调用父页面方法/"><span>vue子页面调用父页面方法</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2019/10/24/vue子页面调用父页面方法/" rel="bookmark">
+        <time class="entry-date published" datetime="2019-10-24T02:58:47.000Z">
+          2019-10-24
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h6 id="父页面"><a href="#父页面" class="headerlink" title="父页面"></a>父页面</h6><p><code>html</code></p>
+<template>
+    <div id="app">
+        <router-view></router-view>
+    </div>
+</template>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&#x27;app&#x27;</span>,</span><br><span class="line">        <span class="title function_">provide</span>(<span class="params"></span>)&#123;</span><br><span class="line">            <span class="keyword">return</span>&#123;</span><br><span class="line">                <span class="attr">say</span>:<span class="variable language_">this</span>.<span class="property">say</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">methods</span>:&#123;</span><br><span class="line">            <span class="title function_">say</span>(<span class="params"></span>)&#123;</span><br><span class="line">                <span class="variable language_">this</span>.<span class="property">$message</span>.<span class="title function_">info</span>(<span class="string">&#x27;我是父页面的方法&#x27;</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h6 id="子页面"><a href="#子页面" class="headerlink" title="子页面"></a>子页面</h6><p><code>html</code></p>
+<template>
+    <button @click="recv">
+        点击调用父页面的方法
+    </button>
+</template>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    export default &#123;</span><br><span class="line">        inject:[&#x27;say&#x27;],</span><br><span class="line">        methods:&#123;</span><br><span class="line">            recv()&#123;</span><br><span class="line">                this.say()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/vue/">vue</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2019/10/18/vue传值与接收/"><span>vue传值与接收</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2019/10/18/vue传值与接收/" rel="bookmark">
+        <time class="entry-date published" datetime="2019-10-18T05:44:30.000Z">
+          2019-10-18
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h6 id="通过name传参与接收"><a href="#通过name传参与接收" class="headerlink" title="通过name传参与接收"></a>通过name传参与接收</h6><p>​    1、传值</p>
+<p>​        <code>this.$router.push(&#123;name: &#39;dispatch&#39;, params: &#123;id: 123456&#125;&#125;)</code></p>
+<p>​    2、接收</p>
+<p>​        <code>this.$route.params.id</code></p>
+<h6 id="通过path传参与接收"><a href="#通过path传参与接收" class="headerlink" title="通过path传参与接收"></a>通过path传参与接收</h6><p>​    1、传值</p>
+<p>​        <code>this.$router.psuh(&#123;path: &#39;dispatch&#39;, query: &#123;id: 123456&#125;&#125;)</code></p>
+<p>​    2、接收</p>
+<p>​        <code>this.$route.query.id</code></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/vue/">vue</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2019/10/15/centos7-安装node/"><span>centos7 安装node</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2019/10/15/centos7-安装node/" rel="bookmark">
+        <time class="entry-date published" datetime="2019-10-15T07:21:57.000Z">
+          2019-10-15
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>1、安装wget，如果之前没有安装的话</p>
+<p>​    <code>yum install -y wget</code></p>
+<p>2、去官网查看最新的长期维护版本</p>
+<p>​    <code>wget https://nodejs.org/dist/v10.13.0/node-v10.13.0-linux-x64.tar.xz</code></p>
+<p>3、解压下载的node包</p>
+<p>​    <code>xz -d node-v10.13.0-linux-x64.tar.xz</code></p>
+<p>​    <code>tar -xf node-v10.13.0-linux-x64.tar</code></p>
+<p>4、配置node与npm。假设当前node目录为/root/node-v10.13.0-linux-x64</p>
+<p>​    <code>ln -s /root/node-v10.13.0-linux-x64/node /usr/bin/node</code></p>
+<p>​    <code>ln -s /root/node-v10.13.0-linux-x64/npm /usr/bin/npm</code></p>
+<p>5、查看node与npm版本，如果成功就完成了</p>
+<p>​    <code>node -v</code></p>
+<p>​    <code>npm -v</code></p>
+<p>6、更新node与node</p>
+<p>​    <code>npm install -g npm</code>    更新npm</p>
+<p>​    <code>npm cache clean -f</code>    清除npm缓存</p>
+<p>​    <code>npm install -g n</code>    安装n模块</p>
+<p>​    <code>ln -s /root/node-v10.13.0-linux-x64/bin/n  /usr/bin/n</code>    配置n模块</p>
+<p>​    <code>n stable</code>    升级node.js到最新稳定版本</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/node-npm/">node npm</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2019/10/15/centos7-安装nginx步骤/"><span>centos7 安装nginx步骤</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2019/10/15/centos7-安装nginx步骤/" rel="bookmark">
+        <time class="entry-date published" datetime="2019-10-15T06:27:49.000Z">
+          2019-10-15
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h6 id="1、安装所需依赖"><a href="#1、安装所需依赖" class="headerlink" title="1、安装所需依赖"></a>1、安装所需依赖</h6><p>​    <code>yum -y install gcc zlib zlib-devel pcre-devel openssl openssl-devel</code></p>
+<h6 id="2、下载并解压安装包"><a href="#2、下载并解压安装包" class="headerlink" title="2、下载并解压安装包"></a>2、下载并解压安装包</h6><p>​    <code>wget http://nginx.org/download/nginx-1.13.7.tar.gz</code></p>
+<p>​    <code>tar -xvf nginx-1.13.7.tar.gz</code></p>
+<h6 id="3、安装nginx"><a href="#3、安装nginx" class="headerlink" title="3、安装nginx"></a>3、安装nginx</h6><p>​    <code>cd nginx-1.13.7</code></p>
+<p>​    <code>./configure</code></p>
+<p>​    <code>make</code></p>
+<p>​    <code>make install</code></p>
+<h6 id="4、启动nginx"><a href="#4、启动nginx" class="headerlink" title="4、启动nginx"></a>4、启动nginx</h6><p>​    <code>/usr/local/nginx/sbin/nginx</code></p>
+<h6 id="5、设置开机启动"><a href="#5、设置开机启动" class="headerlink" title="5、设置开机启动"></a>5、设置开机启动</h6><p>​    1.在/etc/init.d下创建文件nginx</p>
+<p>​        <code>vi /etc/init.d/nginx</code></p>
+<p>​    2.输入官方文档内容</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br></pre></td><td class="code"><pre><span class="line">#!<span class="regexp">/bin/</span>sh</span><br><span class="line">#</span><br><span class="line"># nginx - <span class="variable language_">this</span> script starts and stops the nginx daemon</span><br><span class="line">#</span><br><span class="line"># <span class="attr">chkconfig</span>:   - <span class="number">85</span> <span class="number">15</span></span><br><span class="line"># <span class="attr">description</span>:  <span class="variable constant_">NGINX</span> is an <span class="title function_">HTTP</span>(S) server, <span class="title function_">HTTP</span>(S) reverse \</span><br><span class="line">#               proxy and <span class="variable constant_">IMAP</span>/<span class="title class_">POP3</span> proxy server</span><br><span class="line"># <span class="attr">processname</span>: nginx</span><br><span class="line"># <span class="attr">config</span>:      <span class="regexp">/etc/</span>nginx/nginx.<span class="property">conf</span></span><br><span class="line"># <span class="attr">config</span>:      <span class="regexp">/etc/</span>sysconfig/nginx</span><br><span class="line"># <span class="attr">pidfile</span>:     <span class="regexp">/var/</span>run/nginx.<span class="property">pid</span></span><br><span class="line"></span><br><span class="line"># <span class="title class_">Source</span> <span class="keyword">function</span> library.</span><br><span class="line">. /etc/rc.<span class="property">d</span>/init.<span class="property">d</span>/functions</span><br><span class="line"></span><br><span class="line"># <span class="title class_">Source</span> networking configuration.</span><br><span class="line">. /etc/sysconfig/network</span><br><span class="line"></span><br><span class="line"># <span class="title class_">Check</span> that networking is up.</span><br><span class="line">[ <span class="string">&quot;$NETWORKING&quot;</span> = <span class="string">&quot;no&quot;</span> ] &amp;&amp; exit <span class="number">0</span></span><br><span class="line"></span><br><span class="line">nginx=<span class="string">&quot;/usr/sbin/nginx&quot;</span></span><br><span class="line">prog=$(basename $nginx)</span><br><span class="line"></span><br><span class="line"><span class="variable constant_">NGINX_CONF_FILE</span>=<span class="string">&quot;/etc/nginx/nginx.conf&quot;</span></span><br><span class="line"></span><br><span class="line">[ -f /etc/sysconfig/nginx ] &amp;&amp; . /etc/sysconfig/nginx</span><br><span class="line"></span><br><span class="line">lockfile=<span class="regexp">/var/</span>lock/subsys/nginx</span><br><span class="line"></span><br><span class="line"><span class="title function_">make_dirs</span>(<span class="params"></span>) &#123;</span><br><span class="line">   # make required directories</span><br><span class="line">   user=<span class="string">`$nginx -V 2&gt;&amp;1 | grep &quot;configure arguments:.*--user=&quot; | sed &#x27;s/[^*]*--user=\([^ ]*\).*/\1/g&#x27; -`</span></span><br><span class="line">   <span class="keyword">if</span> [ -n <span class="string">&quot;$user&quot;</span> ]; then</span><br><span class="line">      <span class="keyword">if</span> [ -z <span class="string">&quot;`grep $user /etc/passwd`&quot;</span> ]; then</span><br><span class="line">         useradd -M -s /bin/nologin $user</span><br><span class="line">      fi</span><br><span class="line">      options=<span class="string">`$nginx -V 2&gt;&amp;1 | grep &#x27;configure arguments:&#x27;`</span></span><br><span class="line">      <span class="keyword">for</span> opt <span class="keyword">in</span> $options; <span class="keyword">do</span></span><br><span class="line">          <span class="keyword">if</span> [ <span class="string">`echo $opt | grep &#x27;.*-temp-path&#x27;`</span> ]; then</span><br><span class="line">              value=<span class="string">`echo $opt | cut -d &quot;=&quot; -f 2`</span></span><br><span class="line">              <span class="keyword">if</span> [ ! -d <span class="string">&quot;$value&quot;</span> ]; then</span><br><span class="line">                  # echo <span class="string">&quot;creating&quot;</span> $value</span><br><span class="line">                  mkdir -p $value &amp;&amp; chown -R $user $value</span><br><span class="line">              fi</span><br><span class="line">          fi</span><br><span class="line">       done</span><br><span class="line">    fi</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">start</span>(<span class="params"></span>) &#123;</span><br><span class="line">    [ -x $nginx ] || exit <span class="number">5</span></span><br><span class="line">    [ -f $NGINX_CONF_FILE ] || exit <span class="number">6</span></span><br><span class="line">    make_dirs</span><br><span class="line">    echo -n $<span class="string">&quot;Starting $prog: &quot;</span></span><br><span class="line">    daemon $nginx -c $NGINX_CONF_FILE</span><br><span class="line">    retval=$?</span><br><span class="line">    echo</span><br><span class="line">    [ $retval -eq <span class="number">0</span> ] &amp;&amp; touch $lockfile</span><br><span class="line">    <span class="keyword">return</span> $retval</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">stop</span>(<span class="params"></span>) &#123;</span><br><span class="line">    echo -n $<span class="string">&quot;Stopping $prog: &quot;</span></span><br><span class="line">    killproc $prog -<span class="variable constant_">QUIT</span></span><br><span class="line">    retval=$?</span><br><span class="line">    echo</span><br><span class="line">    [ $retval -eq <span class="number">0</span> ] &amp;&amp; rm -f $lockfile</span><br><span class="line">    <span class="keyword">return</span> $retval</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">restart</span>(<span class="params"></span>) &#123;</span><br><span class="line">    configtest || <span class="keyword">return</span> $?</span><br><span class="line">    stop</span><br><span class="line">    sleep <span class="number">1</span></span><br><span class="line">    start</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">reload</span>(<span class="params"></span>) &#123;</span><br><span class="line">    configtest || <span class="keyword">return</span> $?</span><br><span class="line">    echo -n $<span class="string">&quot;Reloading $prog: &quot;</span></span><br><span class="line">    killproc $prog -<span class="variable constant_">HUP</span></span><br><span class="line">    retval=$?</span><br><span class="line">    echo</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">force_reload</span>(<span class="params"></span>) &#123;</span><br><span class="line">    restart</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">configtest</span>(<span class="params"></span>) &#123;</span><br><span class="line">  $nginx -t -c $NGINX_CONF_FILE</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">rh_status</span>(<span class="params"></span>) &#123;</span><br><span class="line">    status $prog</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">rh_status_q</span>(<span class="params"></span>) &#123;</span><br><span class="line">    rh_status &gt;<span class="regexp">/dev/</span><span class="literal">null</span> <span class="number">2</span>&gt;&amp;<span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">case</span> <span class="string">&quot;$1&quot;</span> <span class="keyword">in</span></span><br><span class="line">    start)</span><br><span class="line">        rh_status_q &amp;&amp; exit <span class="number">0</span></span><br><span class="line">        $1</span><br><span class="line">        ;;</span><br><span class="line">    stop)</span><br><span class="line">        rh_status_q || exit <span class="number">0</span></span><br><span class="line">        $1</span><br><span class="line">        ;;</span><br><span class="line">    restart|configtest)</span><br><span class="line">        $1</span><br><span class="line">        ;;</span><br><span class="line">    reload)</span><br><span class="line">        rh_status_q || exit <span class="number">7</span></span><br><span class="line">        $1</span><br><span class="line">        ;;</span><br><span class="line">    force-reload)</span><br><span class="line">        force_reload</span><br><span class="line">        ;;</span><br><span class="line">    status)</span><br><span class="line">        rh_status</span><br><span class="line">        ;;</span><br><span class="line">    condrestart|<span class="keyword">try</span>-restart)</span><br><span class="line">        rh_status_q || exit <span class="number">0</span></span><br><span class="line">            ;;</span><br><span class="line">    *)</span><br><span class="line">        echo $<span class="string">&quot;Usage: $0 &#123;start|stop|status|restart|condrestart|try-restart|reload|force-reload|configtest&#125;&quot;</span></span><br><span class="line">        exit <span class="number">2</span></span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
+
+<p>​    3.修改其中配置为</p>
+<p>​        <code>nginx=”/usr/local/nginx/sbin/nginx”</code></p>
+<p>​        <code>NGINX_CONF_FILE=”/usr/local/nginx/conf/nginx.conf”</code></p>
+<p>​    4.保存后设置文件执行权限</p>
+<p>​        <code>chmod a+x /etc/init.d/nginx</code></p>
+<p>​    5.将nginx服务添加到chkconfig管理列表中</p>
+<p>​        <code>chkconfig --add /etc/init.d/nginx</code></p>
+<p>​    6.设置开机启动</p>
+<p>​        <code>chkconfig nginx on</code></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/nginx/">nginx</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2019/10/14/端口占用处理/"><span>端口占用处理</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2019/10/14/端口占用处理/" rel="bookmark">
+        <time class="entry-date published" datetime="2019-10-14T08:41:04.000Z">
+          2019-10-14
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h6 id="windows-处理方法"><a href="#windows-处理方法" class="headerlink" title="windows 处理方法"></a>windows 处理方法</h6><p>1、找到对应的PID</p>
+<p>​    <code>netstat -aon|findstr &quot;8080&quot;</code></p>
+<p>2、找到具体占用端口的进程名称</p>
+<p>​    <code>tasklist|findstr &quot;12345&quot;</code></p>
+<p>3、通过任务管理器关闭对应进程</p>
+<h6 id="liunx处理方法"><a href="#liunx处理方法" class="headerlink" title="liunx处理方法"></a>liunx处理方法</h6><p>1、找到对应端口</p>
+<p>​    <code>netstat -aon|findstr &quot;8080&quot;</code></p>
+<p>2、关闭对应端口</p>
+<p>​    <code>tasklist|findstr &quot;12345&quot;</code></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/端口/">端口</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2019/10/12/docker常用操作指令/"><span>linux常用操作指令</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2019/10/12/docker常用操作指令/" rel="bookmark">
+        <time class="entry-date published" datetime="2019-10-12T02:41:07.000Z">
+          2019-10-12
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>1、查看本机所有镜像</p>
+<p>​    <code>docker images</code></p>
+<p>2、查看本机docker运行情况</p>
+<p>​    <code>dcoker ps -a -q</code></p>
+<p>3、通过通配符查找镜像</p>
+<p>​    <code>docker images ce*</code>     #查找包含ce的镜像</p>
+<p>4、查看镜像详情</p>
+<p>​    <code>docker inspect name</code>     #name为镜像名称</p>
+<p>5、搜索镜像</p>
+<p>​    <code>docker search tomcat</code>    #搜索包含tomcat的镜像</p>
+<p>6、删除镜像</p>
+<p>​    <code>docker rmi name</code>    #name为镜像名称，删除多个用空格隔开</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/docker/">docker</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+
+<nav class="pagination">
+  
+  <a href="/page/2/" class="pagination-prev">上一页</a>
+  
+  
+  <a href="/page/4/" class="pagination-next">下一页</a>
+  
+</nav>
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2024 starao
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

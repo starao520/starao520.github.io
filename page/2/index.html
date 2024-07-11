@@ -1,0 +1,792 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>第 2 页 | 列侬,你变了</title>
+
+  
+  <meta name="author" content="starao">
+  
+
+  
+  <meta name="description" content="工作学习小记">
+  
+
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  
+
+  <meta property="og:site_name" content="列侬,你变了"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="列侬,你变了" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">列侬,你变了</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+        <li><a href="/tags">标签</a></li>
+      
+        <li><a href="/about">关于</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2022/07/23/在html中封装vue组件/"><span>在html中封装vue组件</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2022/07/23/在html中封装vue组件/" rel="bookmark">
+        <time class="entry-date published" datetime="2022-07-23T07:11:28.000Z">
+          2022-07-23
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>1、定义任意js用来封装组件,如在err.js中封装ErrMsg组件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">function</span>(<span class="params"><span class="variable language_">window</span>, Vue</span>)&#123;</span><br><span class="line">    <span class="variable language_">window</span>.<span class="property">ErrMsg</span> = &#123;</span><br><span class="line">        <span class="attr">template</span>: <span class="string">``</span>,</span><br><span class="line">        <span class="attr">data</span>: <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> &#123;</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">methords</span>: &#123;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>2、在要使用的HMTL中引入err.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;../../static/js/components/err.js&quot;</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>3、在Vue的components中引用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">components: &#123;</span><br><span class="line">	ErrMsg: ErrMsg</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4、在HTML中对应的地方引入组件</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">err-msg</span> <span class="attr">ref</span>=<span class="string">&quot;errMsgRef&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">err-msg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>5、其他操作与vue中调用子组件的操作无异，可以通过ref来调用子组件的方法和赋值，也可以通过props来传参</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/html-vue/">html vue</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2021/02/26/设置redis开机启动/"><span>设置redis开机启动</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2021/02/26/设置redis开机启动/" rel="bookmark">
+        <time class="entry-date published" datetime="2021-02-26T02:23:22.000Z">
+          2021-02-26
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>1、去git下载redis压缩包（redis-6.2.0.tar.gz）并放到    /usr/local/src    目录</p>
+<p>2、解压</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/local/src</span><br><span class="line">tar -xzf redis-6.2.0.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>3、编译</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/local/src/redis-6.2.0</span><br><span class="line">make		</span><br></pre></td></tr></table></figure>
+
+<p>4、创建redis目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /usr/local/redis</span><br></pre></td></tr></table></figure>
+
+<p>5、复制主要配置文件到新文件夹</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> /usr/local/src/redis-6.2.0/src/redis-server /usr/local/redis/</span><br><span class="line"><span class="built_in">cp</span> /usr/local/src/redis-6.2.0/src/redis-cli /usr/local/redis/</span><br><span class="line"><span class="built_in">cp</span> /usr/local/src/redis-6.2.0/redis.conf /usr/local/redis/</span><br></pre></td></tr></table></figure>
+
+<p>6、开启后台运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#修改redis.conf文件中的daemonize no为daemonize yes并保存</span></span><br><span class="line">vim /usr/local/redis/redis.conf</span><br></pre></td></tr></table></figure>
+
+<p>7、创建redis命令软连接</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#可在任意命令行执行redis</span></span><br><span class="line"><span class="built_in">ln</span> -s /usr/local/redis/redis-cli /usr/bin/redis</span><br></pre></td></tr></table></figure>
+
+<p>8、添加开机启动服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/systemd/system/redis-server.service</span><br><span class="line"><span class="comment">#粘贴以下内容</span></span><br><span class="line">[Unit]</span><br><span class="line">Description=The redis-server Process Manager</span><br><span class="line">After=syslog.target network.target</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line">PIDFile=/var/run/redis_6379.pid</span><br><span class="line">ExecStart=/usr/local/redis/redis-server /usr/local/redis/redis.conf         </span><br><span class="line">ExecReload=/bin/kill -USR2 <span class="variable">$MAINPID</span></span><br><span class="line">ExecStop=/bin/kill -SIGINT <span class="variable">$MAINPID</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<p>9、设置开机启动</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload </span><br><span class="line">systemctl start redis-server.service </span><br><span class="line">systemctl <span class="built_in">enable</span> redis-server.servic</span><br></pre></td></tr></table></figure>
+
+<p>10、永久设置redis密码(重启后生效)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#在配置文件中有个参数：requirepass 这个就是配置redis访问密码的参数；</span></span><br><span class="line"><span class="comment">#比如 requirepass test123；</span></span><br><span class="line">vim /etc/redis.conf</span><br></pre></td></tr></table></figure>
+
+<p>11、临时设置redis密码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis 127.0.0.1:6379&gt; config <span class="built_in">set</span> requirepass test123</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/工作笔记/">工作笔记</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/redis/">redis</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2021/02/25/jar包开机启动/"><span>jar包开机启动</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2021/02/25/jar包开机启动/" rel="bookmark">
+        <time class="entry-date published" datetime="2021-02-25T09:55:03.000Z">
+          2021-02-25
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>1、进入/usr/lib/systemd/system</p>
+<p>2、创建xxx.service</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[Unit]</span><br><span class="line">Description=bing <span class="comment">#描述</span></span><br><span class="line">After=syslog.target network.target  <span class="comment">#依赖</span></span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line"></span><br><span class="line"><span class="comment">#前面是jar包的绝对路径  后面是jar包的绝对路径</span></span><br><span class="line">ExecStart=/root/java/jdk1.8.0_161/bin/java -jar /root/java/signSet/ams-system-2.6.jar </span><br><span class="line">ExecStop=/bin/kill -15 <span class="variable">$MAINPID</span></span><br><span class="line"></span><br><span class="line">User=root</span><br><span class="line">Group=root</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<p>3、刷新 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br></pre></td></tr></table></figure>
+
+<p>4、启动/停止项目</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl start xxx.service	<span class="comment">#开始</span></span><br><span class="line">systemctl stop xxx.service	<span class="comment">#停止</span></span><br><span class="line">systemctl restart xxx.service <span class="comment">#重启</span></span><br></pre></td></tr></table></figure>
+
+<p>5、添加/移除开机启动项</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> xxx.service 	<span class="comment">#添加</span></span><br><span class="line">systemctl <span class="built_in">disable</span> xxx.service	<span class="comment">#移除</span></span><br></pre></td></tr></table></figure>
+
+<p>6、查看运行状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status xxx.service</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/工作笔记/">工作笔记</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/jar/">jar</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2021/02/24/vue项目打包压缩/"><span>vue项目打包压缩</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2021/02/24/vue项目打包压缩/" rel="bookmark">
+        <time class="entry-date published" datetime="2021-02-24T08:49:38.000Z">
+          2021-02-24
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p> 一.安装打包压缩插件(compression-webpack-plugin)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install compression-webpack-plugin --save-dev</span><br></pre></td></tr></table></figure>
+
+<p>二.在vue.config.js文件进行webpack配置</p>
+<p>在chainWebpack中配置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">config.<span class="title function_">plugin</span>(<span class="string">&#x27;compressionPlugin&#x27;</span>)</span><br><span class="line">  .<span class="title function_">use</span>(<span class="keyword">new</span> <span class="title class_">CompressionPlugin</span>(&#123;</span><br><span class="line">    <span class="attr">filename</span>: <span class="string">&#x27;[path][base].gz&#x27;</span>,	<span class="comment">//6.0.0以上版本,以下版本为[path].gz[query]</span></span><br><span class="line">    <span class="attr">algorithm</span>: <span class="string">&#x27;gzip&#x27;</span>,</span><br><span class="line">    <span class="attr">test</span>: productionGzipExtensions,</span><br><span class="line">    <span class="attr">threshold</span>: <span class="number">10240</span>,</span><br><span class="line">    <span class="attr">minRatio</span>: <span class="number">0.8</span>,</span><br><span class="line">    <span class="attr">deleteOriginalAssets</span>: <span class="literal">false</span></span><br><span class="line">  &#125;))</span><br></pre></td></tr></table></figure>
+
+<p>三.修改nginx中gzip配置</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">gzip</span>  <span class="literal">on</span>;</span><br><span class="line"><span class="attribute">gzip_static</span> <span class="literal">on</span>;</span><br><span class="line"><span class="attribute">gzip_min_length</span> <span class="number">1k</span>;</span><br><span class="line"><span class="attribute">gzip_buffers</span> <span class="number">4</span> <span class="number">16k</span>;</span><br><span class="line"><span class="attribute">gzip_comp_level</span> <span class="number">8</span>;</span><br><span class="line"><span class="attribute">gzip_types</span> text/plain application/javascript application/x-javascript text/css application/xml text/javascript application/x-httpd-php image/jpeg image/gif image/png;</span><br><span class="line"><span class="attribute">gzip_vary</span> <span class="literal">on</span>;</span><br><span class="line"><span class="attribute">gzip_disable</span> <span class="string">&quot;MSIE [1-6]\.&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>注:</p>
+<p>nginx中配置gzip_static on提示nginx: [emerg] unknown directive “gzip_static“ in</p>
+<p>此时可用在nginx的安装目录的sbin中使用<code>./nginx -V</code>查看当前nginx的配置信息，看有没有配置<code>--with-http_gzip_static_module</code></p>
+<p>如果没有配置该信息。这时需要我们进入原来的nginx解压的目录中，进行配置并重新安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/local/nginx --with-http_gzip_static_module</span><br><span class="line"></span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/工作笔记/">工作笔记</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/vue/">vue</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2021/01/20/mysql按日期统计/"><span>mysql按日期统计</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2021/01/20/mysql按日期统计/" rel="bookmark">
+        <time class="entry-date published" datetime="2021-01-20T10:26:09.000Z">
+          2021-01-20
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	count( u.id ) AS count,</span><br><span class="line">	s.date </span><br><span class="line">FROM</span><br><span class="line">	(</span><br><span class="line">SELECT</span><br><span class="line">	date_add(&#x27;2021-01-20&#x27;,interval @i:=@i+1 day) as date</span><br><span class="line">	</span><br><span class="line">FROM</span><br><span class="line">	( SELECT 1 &lt;foreach item = &quot;index&quot; collection = &quot;differDays&quot; &gt; UNION ALL SELECT 1 &lt;/foreach&gt; ) AS tmp,</span><br><span class="line">	( SELECT @i := - 1 ) t </span><br><span class="line">	) s</span><br><span class="line">	LEFT JOIN sys_bus u ON s.date = date_format( u.create_time, &#x27;%Y-%m-%d&#x27; ) </span><br><span class="line">	AND u.reg_status = &#x27;2&#x27; </span><br><span class="line">GROUP BY</span><br><span class="line">s.date</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">differDays:	要统计的日期天数</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2021</span>-<span class="number">01</span>-<span class="number">20</span>:	设定的一个开始日期</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/工作笔记/">工作笔记</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/mysql/">mysql</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2021/01/20/mysql查询所有父级目录/"><span>mysql查询所有父级目录</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2021/01/20/mysql查询所有父级目录/" rel="bookmark">
+        <time class="entry-date published" datetime="2021-01-20T10:16:23.000Z">
+          2021-01-20
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	T2.menu_id AS id,</span><br><span class="line">	T2.* </span><br><span class="line">FROM</span><br><span class="line">	(</span><br><span class="line">SELECT</span><br><span class="line">	@r AS _id,</span><br><span class="line">	( SELECT @r := pid FROM sys_menu WHERE menu_id = _id ) AS parent_id,</span><br><span class="line">	@l := @l + 1 AS lvl </span><br><span class="line">FROM</span><br><span class="line">	( SELECT @r := &#x27;44&#x27;, @l := 0 ) vars,</span><br><span class="line">	sys_menu h </span><br><span class="line">	) T1</span><br><span class="line">	JOIN sys_menu T2 ON T1._id = T2.menu_id </span><br><span class="line">WHERE</span><br><span class="line">	T2.type &lt;&gt; &#x27;2&#x27; </span><br><span class="line">ORDER BY</span><br><span class="line">	T1.lvl DESC</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/工作笔记/">工作笔记</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/mysql/">mysql</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2020/12/30/nginx常用命令/"><span>nginx常用命令</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2020/12/30/nginx常用命令/" rel="bookmark">
+        <time class="entry-date published" datetime="2020-12-30T03:16:09.000Z">
+          2020-12-30
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="1、停止Nginx服务的四种方法"><a href="#1、停止Nginx服务的四种方法" class="headerlink" title="1、停止Nginx服务的四种方法"></a>1、停止Nginx服务的四种方法</h2><h3 id="1-从容停止服务"><a href="#1-从容停止服务" class="headerlink" title="1.从容停止服务"></a>1.从容停止服务</h3><p>​        这种方法较stop相比就比较温和一些了，需要进程完成当前工作后再停止。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">nginx</span> -s quit</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-立即停止服务"><a href="#2-立即停止服务" class="headerlink" title="2.立即停止服务"></a>2.立即停止服务</h3><p>​        这种方法比较强硬，无论进程是否在工作，都直接停止进程。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">nginx</span> -s stop</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-systemctl-停止"><a href="#3-systemctl-停止" class="headerlink" title="3.systemctl 停止"></a>3.systemctl 停止</h3><p>​        systemctl属于Linux命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop nginx.service</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-killall-方法杀死进程"><a href="#4-killall-方法杀死进程" class="headerlink" title="4.killall 方法杀死进程"></a>4.killall 方法杀死进程</h3><p>​        直接杀死进程，在上面无效的情况下使用，态度强硬，简单粗暴！</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">killall nginx</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2、启动Nginx"><a href="#2、启动Nginx" class="headerlink" title="2、启动Nginx"></a>2、启动Nginx</h2><h3 id="1-nginx直接启动"><a href="#1-nginx直接启动" class="headerlink" title="1.nginx直接启动"></a>1.nginx直接启动</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./<span class="attribute">nginx</span>	//在sbin目录下执行</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-systemctl命令启动"><a href="#2-systemctl命令启动" class="headerlink" title="2.systemctl命令启动"></a>2.systemctl命令启动</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start nginx.service</span><br></pre></td></tr></table></figure>
+
+<h2 id="3、查看启动后记录"><a href="#3、查看启动后记录" class="headerlink" title="3、查看启动后记录"></a>3、查看启动后记录</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep nginx</span><br></pre></td></tr></table></figure>
+
+<h2 id="4、重启nginx服务"><a href="#4、重启nginx服务" class="headerlink" title="4、重启nginx服务"></a>4、重启nginx服务</h2><h3 id="1-重启服务"><a href="#1-重启服务" class="headerlink" title="1.重启服务"></a>1.重启服务</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart nginx.service</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-重载配置文件"><a href="#2-重载配置文件" class="headerlink" title="2.重载配置文件"></a>2.重载配置文件</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./<span class="attribute">nginx</span> -s reload	//在sbin目录下执行</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-查看端口号"><a href="#5-查看端口号" class="headerlink" title="5.查看端口号"></a>5.查看端口号</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -tlnp</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/nginx/">nginx</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2020/12/21/vue前端下载base64文件/"><span>vue前端下载base64文件</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2020/12/21/vue前端下载base64文件/" rel="bookmark">
+        <time class="entry-date published" datetime="2020-12-21T08:41:39.000Z">
+          2020-12-21
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="1、单个文件下载"><a href="#1、单个文件下载" class="headerlink" title="1、单个文件下载"></a>1、单个文件下载</h2><h4 id="1-base64转blob"><a href="#1-base64转blob" class="headerlink" title="1.base64转blob"></a>1.base64转blob</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">base64ToBlob</span>(<span class="params">code</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> parts = code.<span class="title function_">split</span>(<span class="string">&#x27;;base64,&#x27;</span>);</span><br><span class="line">  <span class="keyword">let</span> contentType = parts[<span class="number">0</span>].<span class="title function_">split</span>(<span class="string">&#x27;:&#x27;</span>)[<span class="number">1</span>];</span><br><span class="line">  <span class="keyword">let</span> raw = <span class="variable language_">window</span>.<span class="title function_">atob</span>(parts[<span class="number">1</span>]);</span><br><span class="line">  <span class="keyword">let</span> rawLength = raw.<span class="property">length</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> uInt8Array = <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(rawLength);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; rawLength; ++i) &#123;</span><br><span class="line">    uInt8Array[i] = raw.<span class="title function_">charCodeAt</span>(i);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Blob</span>([uInt8Array], &#123;<span class="attr">type</span>: contentType&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-下载文件"><a href="#2-下载文件" class="headerlink" title="2.下载文件"></a>2.下载文件</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">downloadFile</span>(<span class="params">fileName, content</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> aLink = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line">  <span class="comment">//new Blob([content]);</span></span><br><span class="line">  <span class="keyword">let</span> blob = <span class="title function_">base64ToBlob</span>(content); </span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> evt = <span class="variable language_">document</span>.<span class="title function_">createEvent</span>(<span class="string">&quot;HTMLEvents&quot;</span>);</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;点击下载&quot;</span>,evt)</span><br><span class="line">  <span class="comment">//initEvent 不加后两个参数在FF下会报错  事件类型，是否冒泡，是否阻止浏览器的默认行为</span></span><br><span class="line">  evt.<span class="title function_">initEvent</span>(<span class="string">&quot;click&quot;</span>, <span class="literal">true</span>, <span class="literal">true</span>);</span><br><span class="line">  aLink.<span class="property">download</span> = fileName;</span><br><span class="line">  aLink.<span class="property">href</span> = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(blob);</span><br><span class="line">  <span class="comment">// aLink.dispatchEvent(evt);</span></span><br><span class="line">  aLink.<span class="title function_">click</span>()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2、批量打包下载"><a href="#2、批量打包下载" class="headerlink" title="2、批量打包下载"></a>2、批量打包下载</h2><h4 id="1-需要安装两个依赖"><a href="#1-需要安装两个依赖" class="headerlink" title="1.需要安装两个依赖"></a>1.需要安装两个依赖</h4><p>​    JSZip：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install jszip --save</span><br></pre></td></tr></table></figure>
+
+<p>​    FileSaver:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install file-saver --save</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">batchDown</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">batchList</span>.<span class="property">length</span> === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">$message</span>.<span class="title function_">warning</span>(<span class="string">&#x27;请选择要下载的证书&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 打包下载的文件名</span></span><br><span class="line">  <span class="keyword">const</span> blogTitle = <span class="string">&#x27;证书下载&#x27;</span></span><br><span class="line">  <span class="keyword">const</span> zip = <span class="keyword">new</span> <span class="title class_">JSZip</span>()</span><br><span class="line">  <span class="keyword">const</span> imgs = zip.<span class="title function_">folder</span>(blogTitle)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 遍历要下载的文件对象，这里都是png，可以根据实际情况修改</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> k = <span class="number">0</span>; k &lt; <span class="variable language_">this</span>.<span class="property">batchList</span>.<span class="property">length</span>; k++) &#123;</span><br><span class="line">    imgs.<span class="title function_">file</span>(<span class="variable language_">this</span>.<span class="property">batchList</span>[k].<span class="property">doc_name</span> + <span class="string">&#x27;.png&#x27;</span>, <span class="variable language_">this</span>.<span class="property">batchList</span>[k].<span class="property">doc_data</span>.<span class="title function_">split</span>(<span class="string">&#x27;base64,&#x27;</span>)[<span class="number">1</span>], &#123;</span><br><span class="line">      <span class="attr">base64</span>: <span class="literal">true</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  zip.<span class="title function_">generateAsync</span>(&#123; <span class="attr">type</span>: <span class="string">&#x27;blob&#x27;</span> &#125;).<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">content</span>) &#123;</span><br><span class="line">    <span class="title class_">FileSaver</span>.<span class="title function_">saveAs</span>(content, blogTitle + <span class="string">&#x27;.zip&#x27;</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">dialogVisible</span> = <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/vue/">vue</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2020/12/21/nginx常见问题/"><span>nginx常见问题</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2020/12/21/nginx常见问题/" rel="bookmark">
+        <time class="entry-date published" datetime="2020-12-21T08:27:44.000Z">
+          2020-12-21
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="1、414-request-uri-too-large"><a href="#1、414-request-uri-too-large" class="headerlink" title="1、414 request-uri too large"></a>1、414 request-uri too large</h2><p>​        在nginx配置(http)中添加</p>
+<p>​        </p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">client_header_buffer_size</span> <span class="number">512k</span>; </span><br></pre></td></tr></table></figure>
+
+<p>​        </p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">large_client_header_buffers</span> <span class="number">4</span> <span class="number">512k</span>;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/nginx/">nginx</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2020/12/14/前端生成SM2公私钥/"><span>前端生成SM2公私钥</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2020/12/14/前端生成SM2公私钥/" rel="bookmark">
+        <time class="entry-date published" datetime="2020-12-14T08:02:39.000Z">
+          2020-12-14
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>1.需要引入特定的js文件(jsrsasign)</p>
+<p>2.生成公私钥</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">getKeys</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> ec = <span class="keyword">new</span> <span class="variable constant_">KJUR</span>.<span class="property">crypto</span>.<span class="title function_">ECDSA</span>(&#123; <span class="string">&#x27;curve&#x27;</span>: <span class="string">&#x27;sm2&#x27;</span> &#125;);</span><br><span class="line">  <span class="keyword">const</span> keypair = ec.<span class="title function_">generateKeyPairHex</span>();</span><br><span class="line"></span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">privateKey</span> = keypair.<span class="property">ecprvhex</span>;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">publicKey</span> = keypair.<span class="property">ecpubhex</span>;</span><br><span class="line"></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">info</span>(<span class="string">&#x27;公钥：&#x27;</span> + <span class="variable language_">this</span>.<span class="property">publicKey</span>);</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">info</span>(<span class="string">&#x27;私钥：&#x27;</span> + <span class="variable language_">this</span>.<span class="property">privateKey</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3.签名</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">signMsg</span> (<span class="params">privateKey, msg</span>) &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> sig = <span class="keyword">new</span> <span class="variable constant_">KJUR</span>.<span class="property">crypto</span>.<span class="title class_">Signature</span>(&#123; <span class="string">&#x27;alg&#x27;</span>: <span class="string">&#x27;SM3withSM2&#x27;</span>, <span class="string">&#x27;prov&#x27;</span>: <span class="string">&#x27;cryptojs/jsrsa&#x27;</span> &#125;);</span><br><span class="line">    sig.<span class="title function_">initSign</span>(&#123; <span class="string">&#x27;ecprvhex&#x27;</span>: privateKey, <span class="string">&#x27;eccurvename&#x27;</span>: <span class="string">&#x27;sm2&#x27;</span> &#125;);</span><br><span class="line">    <span class="keyword">return</span> sig.<span class="title function_">sign</span>(msg)</span><br><span class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">info</span>(<span class="string">&#x27;签名失败&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>说明:</p>
+<p>1.前端生成的为压缩公钥，其公钥hex想在java或者go端解析需要加上头：3059301306072a8648ce3d020106082a811ccf5501822d034200</p>
+<p> <code>公钥：3059301306072a8648ce3d020106082a811ccf5501822d034200 + 04 +x +y</code></p>
+<p>2.前端生成的私钥为压缩私钥，想在后台解析应如下（实际并不需要）</p>
+<p> <code>308193020100301306072a8648ce3d020106082a811ccf5501822d047930770201010420 + 压缩的私钥 + a00a06082a811ccf5501822da144034200 + 公钥hex</code></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/笔记/">笔记</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/SM2/">SM2</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+
+<nav class="pagination">
+  
+  <a href="/" class="pagination-prev">上一页</a>
+  
+  
+  <a href="/page/3/" class="pagination-next">下一页</a>
+  
+</nav>
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2024 starao
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

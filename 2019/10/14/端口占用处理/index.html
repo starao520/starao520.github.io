@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>端口占用处理 | 列侬,你变了</title>
+
+  
+  <meta name="author" content="starao">
+  
+
+  
+  <meta name="description" content="工作学习小记">
+  
+
+  
+  
+  <meta name="keywords" content="端口">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="端口占用处理"/>
+
+  <meta property="og:site_name" content="列侬,你变了"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="列侬,你变了" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">列侬,你变了</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+        <li><a href="/tags">标签</a></li>
+      
+        <li><a href="/about">关于</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>端口占用处理</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2019/10/14/端口占用处理/" rel="bookmark">
+        <time class="entry-date published" datetime="2019-10-14T08:41:04.000Z">
+          2019-10-14
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h6 id="windows-处理方法"><a href="#windows-处理方法" class="headerlink" title="windows 处理方法"></a>windows 处理方法</h6><p>1、找到对应的PID</p>
+<p>​    <code>netstat -aon|findstr &quot;8080&quot;</code></p>
+<p>2、找到具体占用端口的进程名称</p>
+<p>​    <code>tasklist|findstr &quot;12345&quot;</code></p>
+<p>3、通过任务管理器关闭对应进程</p>
+<h6 id="liunx处理方法"><a href="#liunx处理方法" class="headerlink" title="liunx处理方法"></a>liunx处理方法</h6><p>1、找到对应端口</p>
+<p>​    <code>netstat -aon|findstr &quot;8080&quot;</code></p>
+<p>2、关闭对应端口</p>
+<p>​    <code>tasklist|findstr &quot;12345&quot;</code></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/端口/">端口</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2024 starao
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

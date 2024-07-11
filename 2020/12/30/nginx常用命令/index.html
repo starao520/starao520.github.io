@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>nginx常用命令 | 列侬,你变了</title>
+
+  
+  <meta name="author" content="starao">
+  
+
+  
+  <meta name="description" content="工作学习小记">
+  
+
+  
+  
+  <meta name="keywords" content="nginx">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="nginx常用命令"/>
+
+  <meta property="og:site_name" content="列侬,你变了"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="列侬,你变了" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">列侬,你变了</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+        <li><a href="/tags">标签</a></li>
+      
+        <li><a href="/about">关于</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>nginx常用命令</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2020/12/30/nginx常用命令/" rel="bookmark">
+        <time class="entry-date published" datetime="2020-12-30T03:16:09.000Z">
+          2020-12-30
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="1、停止Nginx服务的四种方法"><a href="#1、停止Nginx服务的四种方法" class="headerlink" title="1、停止Nginx服务的四种方法"></a>1、停止Nginx服务的四种方法</h2><h3 id="1-从容停止服务"><a href="#1-从容停止服务" class="headerlink" title="1.从容停止服务"></a>1.从容停止服务</h3><p>​        这种方法较stop相比就比较温和一些了，需要进程完成当前工作后再停止。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">nginx</span> -s quit</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-立即停止服务"><a href="#2-立即停止服务" class="headerlink" title="2.立即停止服务"></a>2.立即停止服务</h3><p>​        这种方法比较强硬，无论进程是否在工作，都直接停止进程。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">nginx</span> -s stop</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-systemctl-停止"><a href="#3-systemctl-停止" class="headerlink" title="3.systemctl 停止"></a>3.systemctl 停止</h3><p>​        systemctl属于Linux命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop nginx.service</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-killall-方法杀死进程"><a href="#4-killall-方法杀死进程" class="headerlink" title="4.killall 方法杀死进程"></a>4.killall 方法杀死进程</h3><p>​        直接杀死进程，在上面无效的情况下使用，态度强硬，简单粗暴！</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">killall nginx</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2、启动Nginx"><a href="#2、启动Nginx" class="headerlink" title="2、启动Nginx"></a>2、启动Nginx</h2><h3 id="1-nginx直接启动"><a href="#1-nginx直接启动" class="headerlink" title="1.nginx直接启动"></a>1.nginx直接启动</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./<span class="attribute">nginx</span>	//在sbin目录下执行</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-systemctl命令启动"><a href="#2-systemctl命令启动" class="headerlink" title="2.systemctl命令启动"></a>2.systemctl命令启动</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start nginx.service</span><br></pre></td></tr></table></figure>
+
+<h2 id="3、查看启动后记录"><a href="#3、查看启动后记录" class="headerlink" title="3、查看启动后记录"></a>3、查看启动后记录</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep nginx</span><br></pre></td></tr></table></figure>
+
+<h2 id="4、重启nginx服务"><a href="#4、重启nginx服务" class="headerlink" title="4、重启nginx服务"></a>4、重启nginx服务</h2><h3 id="1-重启服务"><a href="#1-重启服务" class="headerlink" title="1.重启服务"></a>1.重启服务</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart nginx.service</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-重载配置文件"><a href="#2-重载配置文件" class="headerlink" title="2.重载配置文件"></a>2.重载配置文件</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./<span class="attribute">nginx</span> -s reload	//在sbin目录下执行</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-查看端口号"><a href="#5-查看端口号" class="headerlink" title="5.查看端口号"></a>5.查看端口号</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -tlnp</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/nginx/">nginx</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2024 starao
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

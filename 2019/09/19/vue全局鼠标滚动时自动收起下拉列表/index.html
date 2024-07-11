@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>vue全局鼠标滚动时自动收起下拉列表 | 列侬,你变了</title>
+
+  
+  <meta name="author" content="starao">
+  
+
+  
+  <meta name="description" content="工作学习小记">
+  
+
+  
+  
+  <meta name="keywords" content="vue">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="vue全局鼠标滚动时自动收起下拉列表"/>
+
+  <meta property="og:site_name" content="列侬,你变了"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="列侬,你变了" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">列侬,你变了</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+        <li><a href="/tags">标签</a></li>
+      
+        <li><a href="/about">关于</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>vue全局鼠标滚动时自动收起下拉列表</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2019/09/19/vue全局鼠标滚动时自动收起下拉列表/" rel="bookmark">
+        <time class="entry-date published" datetime="2019-09-19T08:02:46.000Z">
+          2019-09-19
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h4 id="JS代码"><a href="#JS代码" class="headerlink" title="JS代码"></a>JS代码</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> lock = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">let</span> el = <span class="literal">null</span>;</span><br><span class="line">(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="variable language_">window</span>.<span class="property">CustomEvent</span> === <span class="string">&#x27;function&#x27;</span>) <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// If not IE</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">CustomEvent</span> (<span class="params">event, params</span>) &#123;</span><br><span class="line">    params = params || &#123; <span class="attr">bubbles</span>: <span class="literal">false</span>, <span class="attr">cancelable</span>: <span class="literal">false</span>, <span class="attr">detail</span>: <span class="literal">undefined</span> &#125;;</span><br><span class="line">    <span class="keyword">var</span> evt = <span class="variable language_">document</span>.<span class="title function_">createEvent</span>(<span class="string">&#x27;CustomEvent&#x27;</span>);</span><br><span class="line">    evt.<span class="title function_">initCustomEvent</span>(event, params.<span class="property">bubbles</span>, params.<span class="property">cancelable</span>, params.<span class="property">detail</span>);</span><br><span class="line">    <span class="keyword">return</span> evt;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title class_">CustomEvent</span>.<span class="property"><span class="keyword">prototype</span></span> = <span class="variable language_">window</span>.<span class="property">Event</span>.<span class="property"><span class="keyword">prototype</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">CustomEvent</span> = <span class="title class_">CustomEvent</span>;</span><br><span class="line">&#125;)();</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">MousedownEvent</span> = <span class="keyword">new</span> <span class="variable language_">window</span>.<span class="title class_">CustomEvent</span>(<span class="string">&#x27;mousedown&#x27;</span>, &#123; <span class="attr">bubbles</span>: <span class="literal">true</span> &#125;);</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">MouseupEvent</span> = <span class="keyword">new</span> <span class="variable language_">window</span>.<span class="title class_">CustomEvent</span>(<span class="string">&#x27;mouseup&#x27;</span>, &#123; <span class="attr">bubbles</span>: <span class="literal">true</span> &#125;);</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">fakeClickOutSide</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">document</span>.<span class="title function_">dispatchEvent</span>(<span class="title class_">MousedownEvent</span>);</span><br><span class="line">  <span class="variable language_">document</span>.<span class="title function_">dispatchEvent</span>(<span class="title class_">MouseupEvent</span>);</span><br><span class="line">  lock = <span class="literal">true</span>; <span class="comment">// console.log(&#x27;dispatchEvent&#x27;);</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">mousedownHandle</span> = e =&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> classList = e.<span class="property">target</span>.<span class="property">classList</span>;</span><br><span class="line">  <span class="keyword">if</span> (classList.<span class="title function_">contains</span>(<span class="string">&#x27;el-select__caret&#x27;</span>) || classList.<span class="title function_">contains</span>(<span class="string">&#x27;el-input__inner&#x27;</span>)) &#123;</span><br><span class="line">    lock = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (lock) <span class="keyword">return</span>;</span><br><span class="line">  <span class="title function_">fakeClickOutSide</span>();</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">mousewheelHandle</span> = e =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (lock || e.<span class="property">target</span>.<span class="property">classList</span>.<span class="title function_">contains</span>(<span class="string">&#x27;el-select-dropdown__item&#x27;</span>) || e.<span class="property">target</span>.<span class="property">parentNode</span>.<span class="property">classList</span>.<span class="title function_">contains</span>(<span class="string">&#x27;el-select-dropdown__item&#x27;</span>)) <span class="keyword">return</span>;</span><br><span class="line">  <span class="title function_">fakeClickOutSide</span>();</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">eventListener</span> = (<span class="params">type</span>) =&gt; &#123;</span><br><span class="line">  el[type + <span class="string">&#x27;EventListener&#x27;</span>](<span class="string">&#x27;mousedown&#x27;</span>, mousedownHandle);</span><br><span class="line">  <span class="variable language_">window</span>[type + <span class="string">&#x27;EventListener&#x27;</span>](<span class="string">&#x27;mousewheel&#x27;</span>, mousewheelHandle);</span><br><span class="line">  <span class="variable language_">window</span>[type + <span class="string">&#x27;EventListener&#x27;</span>](<span class="string">&#x27;DOMMouseScroll&#x27;</span>, mousewheelHandle); <span class="comment">// fireFox 3.5+</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="title function_">mounted</span> () &#123;</span><br><span class="line">    el = <span class="variable language_">this</span>.<span class="property">$root</span>.<span class="property">$el</span>;</span><br><span class="line">    el.<span class="property">addFakeClickOutSideEventCount</span> = el.<span class="property">addFakeClickOutSideEventCount</span> || <span class="number">0</span>;</span><br><span class="line">    (!el.<span class="property">addFakeClickOutSideEventCount</span>) &amp;&amp; <span class="variable language_">this</span>.$nextTick(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="title function_">eventListener</span>(<span class="string">&#x27;add&#x27;</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    el.<span class="property">addFakeClickOutSideEventCount</span> += <span class="number">1</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="title function_">destroyed</span> () &#123;</span><br><span class="line">    <span class="title function_">eventListener</span>(<span class="string">&#x27;remove&#x27;</span>);</span><br><span class="line">    el.<span class="property">addFakeClickOutSideEventCount</span> -= <span class="number">1</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h4><p>1、在需要使用的页面引入该js文件<br>2、使用mixins<br>    <code>mixins: [fakeClickOutSide]</code></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/vue/">vue</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2024 starao
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>
